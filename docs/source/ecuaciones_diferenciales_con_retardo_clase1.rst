@@ -3,7 +3,9 @@ Ecuaciones diferenciales con retardo
 
 Clase 1, versi´on preliminar (las cr´ıticas son bienvenidas)
 
-1 Introducci´on
+1 Introducción
+--------------
+
 Con probabilidad 1, la primera clase de un primer curso sobre ecuaciones diferenciales comienza con el siguiente ejemplo
 
 .. math::
@@ -11,7 +13,7 @@ Con probabilidad 1, la primera clase de un primer curso sobre ecuaciones diferen
    x'(t) = x(t).
 
 
-M´as all´a de las bromas estudiantiles sobre la funci´on exponencial1
+Más all´a de las bromas estudiantiles sobre la función exponencial1
 , todo el
 mundo acepta inmediatamente que x(t) = e
 t
