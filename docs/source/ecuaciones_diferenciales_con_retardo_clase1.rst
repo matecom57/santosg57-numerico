@@ -17,12 +17,12 @@ Más allá de las bromas estudiantiles sobre la función exponencial, todo el
 mundo acepta inmediatamente que :math:`x(t) = e^t` es una solución y, con un m´ınimo
 esfuerzo adicional, que todas las soluciones son de la forma x(t) = Cet
 , en donde
-C es una constante arbitraria. Podemos suponer C ∈ C y entonces es f´acil ver
-que la f´ormula obtenida abarca todas las posibles soluciones complejas de la
-ecuaci´on. Muy pronto, esta idea elemental se transforma en un m´etodo general
-para obtener soluciones de ecuaciones lineales con coeficientes constantes: “proponer” soluciones de la forma x(t) = e
-λt y hallar los valores de λ que anulan el
-polinomio caracter´ıstico asociado a la ecuaci´on. Claro que en nuestro ejemplo,
+C es una constante arbitraria. Podemos suponer :math:`C \in \mathbb{C}`C y entonces es fácil ver
+que la fórmula obtenida abarca todas las posibles soluciones complejas de la
+ecuación. Muy pronto, esta idea elemental se transforma en un método general
+para obtener soluciones de ecuaciones lineales con coeficientes constantes: “proponer” soluciones de la forma :math:`x(t) = e
+^{λt}` y hallar los valores de λ que anulan el
+polinomio característico asociado a la ecuación. Claro que en nuestro ejemplo,
 todo se torna bastante trivial: como x
 0
 (t) = λx(t), al reemplazar en la ecuaci´on
