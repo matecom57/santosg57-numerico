@@ -1,4 +1,5 @@
 Ecuaciones diferenciales con retardo
+====================================
 
 Clase 1, versi´on preliminar (las cr´ıticas son bienvenidas)
 
