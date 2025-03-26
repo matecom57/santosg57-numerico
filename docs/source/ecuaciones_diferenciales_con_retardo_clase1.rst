@@ -13,11 +13,8 @@ Con probabilidad 1, la primera clase de un primer curso sobre ecuaciones diferen
    x'(t) = x(t).
 
 
-Más all´a de las bromas estudiantiles sobre la función exponencial1
-, todo el
-mundo acepta inmediatamente que x(t) = e
-t
-es una soluci´on y, con un m´ınimo
+Más allá de las bromas estudiantiles sobre la función exponencial, todo el
+mundo acepta inmediatamente que :math:`x(t) = e^t` es una solución y, con un m´ınimo
 esfuerzo adicional, que todas las soluciones son de la forma x(t) = Cet
 , en donde
 C es una constante arbitraria. Podemos suponer C ∈ C y entonces es f´acil ver
