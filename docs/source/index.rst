@@ -20,3 +20,6 @@ Contents
 
    usage
    api
+   ecuaciones_diferenciales_con_retardo_clase1.rst 
+
+
