@@ -21,5 +21,6 @@ Contents
    usage
    api
    ecuaciones_diferenciales_con_retardo_clase1.rst 
+   Numerical_Analysis_2E_Walter/c01
 
 

@@ -1,0 +1,2929 @@
+c01
+===
+
+Preface to the Second Edition
+In this second edition, the outline of chapters and sections has been preserved. The
+subtitle “An Introduction”, as suggested by several reviewers, has been deleted. The
+content, however, is brought up to date, both in the text and in the notes. Many
+passages in the text have been either corrected or improved. Some biographical
+notes have been added as well as a few exercises and computer assignments. The
+typographical appearance has also been improved by printing vectors and matrices
+consistently in boldface types.
+With regard to computer language in illustrations and exercises, we now adopt
+uniformly Matlab. For readers not familiar with Matlab, there are a number of
+introductory texts available, some, like Moler [2004], Otto and Denier [2005],
+Stanoyevitch [2005] that combine Matlab with numerical computing, others, like
+Knight [2000], Higham and Higham [2005], Hunt, Lipsman and Rosenberg [2006],
+and Driscoll [2009], more exclusively focused on Matlab.
+The major novelty, however, is a complete set of detailed solutions to all exercises
+and machine assignments. The solution manual is available to instructors upon
+request at the publisher’s website http://www.birkhauser-science.com/978-0-8176-
+8258-3. Selected solutions are also included in the text to give students an idea of
+what is expected. The bibliography has been expanded to reflect technical advances
+in the field and to include references to new books and expository accounts. As a
+result, the text has undergone an expansion in size of about 20%.
+
+Preface to the First Edition
+The book is designed for use in a graduate program in Numerical Analysis that
+is structured so as to include a basic introductory course and subsequent more
+specialized courses. The latter are envisaged to cover such topics as numerical
+linear algebra, the numerical solution of ordinary and partial differential equations,
+and perhaps additional topics related to complex analysis, to multidimensional
+analysis, in particular optimization, and to functional analysis and related functional
+equations. Viewed in this context, the first four chapters of our book could serve as
+a text for the basic introductory course, and the remaining three chapters (which
+indeed are at a distinctly higher level) could provide a text for an advanced course
+on the numerical solution of ordinary differential equations. In a sense, therefore,
+the book breaks with tradition in that it does no longer attempt to deal with all
+major topics of numerical mathematics. It is felt by the author that some of the
+current subdisciplines, particularly those dealing with linear algebra and partial
+differential equations, have developed into major fields of study that have attained
+a degree of autonomy and identity that justifies their treatment in separate books
+and separate courses on the graduate level. The term “Numerical Analysis” as
+used in this book, therefore, is to be taken in the narrow sense of the numerical
+analogue of Mathematical Analysis, comprising such topics as machine arithmetic,
+the approximation of functions, approximate differentiation and integration, and the
+approximate solution of nonlinear equations and of ordinary differential equations.
+What is being covered, on the other hand, is done so with a view toward
+stressing basic principles and maintaining simplicity and student-friendliness as far
+as possible. In this sense, the book is “An Introduction”. Topics that, even though
+important and of current interest, require a level of technicality that transcends the
+bounds of simplicity striven for, are referenced in detailed bibliographic notes at the
+end of each chapter. It is hoped, in this way, to place the material treated in proper
+context and to help, indeed encourage, the reader to pursue advanced modern topics
+in more depth.
+A significant feature of the book is the large collection of exercises that
+are designed to help the student develop problem-solving skills and to provide
+interesting extensions of topics treated in the text. Particular attention is given to
+
+machine assignments, where the student is encouraged to implement numerical
+techniques on the computer and to make use of modern software packages.
+The author has taught the basic introductory course and the advanced course on
+ordinary differential equations regularly at Purdue University for the last 30 years
+or so. The former, typically, was offered both in the fall and spring semesters, to a
+mixed audience consisting of graduate (and some good undergraduate) students in
+mathematics, computer science, and engineering, while the latter was taught only in
+the fall, to a smaller but also mixed audience. Written notes began to materialize in
+the 1970s, when the author taught the basic course repeatedly in summer courses on
+Mathematics held in Perugia, Italy. Indeed, for some time, these notes existed only
+in the Italian language. Over the years, they were progressively expanded, updated,
+and transposed into English, and along with that, notes for the advanced course were
+developed. This, briefly, is how the present book evolved.
+A long gestation period such as this, of course, is not without dangers, the
+most notable one being a tendency for the material to become dated. The author
+tried to counteract this by constantly updating and revising the notes, adding newer
+developments when deemed appropriate. There are, however, benefits as well: over
+time, one develops a sense for what is likely to stand the test of time and what
+may only be of temporary interest, and one selects and deletes accordingly. Another
+benefit is the steady accumulation of exercises and the opportunity to have them
+tested on a large and diverse student population.
+The purpose of academic teaching, in the author’s view, is twofold: to transmit
+knowledge, and, perhaps more important, to kindle interest and even enthusiasm
+in the student. Accordingly, the author did not strive for comprehensiveness –
+even within the boundaries delineated – but rather tried to concentrate on what is
+essential, interesting and intellectually pleasing, and teachable. In line with this,
+an attempt has been made to keep the text uncluttered with numerical examples and
+other illustrative material. Being well aware, however, that mastery of a subject does
+not come from studying alone but from active participation, the author provided
+many exercises, including machine projects. Attributions of results to specific
+authors and citations to the literature have been deliberately omitted from the body
+of the text. Each chapter, as already mentioned, has a set of appended notes that
+help the reader to pursue related topics in more depth and to consult the specialized
+literature. It is here where attributions and historical remarks are made, and where
+citations to the literature – both textbook and research – appear.
+The main text is preceded by a prologue, which is intended to place the book in
+proper perspective. In addition to other textbooks on the subject, and information
+on software, it gives a detailed list of topics not treated in this book, but definitely
+belonging to the vast area of computational mathematics, and it provides ample
+references to relevant texts. A list of numerical analysis journals is also included.
+The reader is expected to have a good background in calculus and advanced
+calculus. Some passages of the text require a modest degree of acquaintance with
+linear algebra, complex analysis, or differential equations. These passages, however,
+can easily be skipped, without loss of continuity, by a student who is not familiar
+with these subjects.
+
+It is a pleasure to thank the publisher for showing interest in this book and
+cooperating in producing it. The author is also grateful to Soren Jensen and Manil
+Suri, who taught from this text, and to an anonymous reader; they all made many
+helpful suggestions on improving the presentation. He is particularly indebted to
+Prof. Jensen for substantially helping in preparing the exercises to Chap. 7. The
+author further acknowledges assistance from Carl de Boor in preparing the notes to
+Chap. 2 and to Werner C. Rheinboldt for helping with the notes to Chap. 4. Last but
+not least, he owes a measure of gratitude to Connie Wilson for typing a preliminary
+version of the text and to Adam Hammer for assisting the author with the more
+intricate aspects of LaTeX.
+
+Prologue
+P1 Overview
+Numerical Analysis is the branch of mathematics that provides tools and methods
+for solving mathematical problems in numerical form. The objective is to develop
+detailed computational procedures, capable of being implemented on electronic
+computers, and to study their performance characteristics. Related fields are Sci-
+entific Computation, which explores the application of numerical techniques and
+computer architectures to concrete problems arising in the sciences and engineering;
+Complexity Theory, which analyzes the number of “operations” and the amount of
+computer memory required to solve a problem; and Parallel Computation, which
+is concerned with organizing computational procedures in a manner that allows
+running various parts of the procedures simultaneously on different processors.
+The problems dealt with in computational mathematics come from virtually
+all branches of pure and applied mathematics. There are computational aspects
+in number theory, combinatorics, abstract algebra, linear algebra, approximation
+theory, geometry, statistics, optimization, complex analysis, nonlinear equations,
+differential and other functional equations, and so on. It is clearly impossible
+to deal with all these topics in a single text of reasonable size. Indeed, the
+tendency today is to develop specialized texts dealing with one or the other
+of these topics. In the present text we concentrate on subject matters that are
+basic to problems in approximation theory, nonlinear equations, and differential
+equations. Accordingly, we have chapters on machine arithmetic, approximation
+and interpolation, numerical differentiation and integration, nonlinear equations,
+one-step and multistep methods for ordinary differential equations, and boundary
+value problems in ordinary differential equations. Important topics not covered
+in this text are computational number theory, algebra, and geometry; constructive
+methods in optimization and complex analysis; numerical linear algebra; and the
+numerical solution of problems involving partial differential equations and integral
+equations. Selected texts for these areas are enumerated in Sect. P3.
+
+We now describe briefly the topics treated in this text. Chapter 1 deals with
+the basic facts of life regarding machine computation. It recognizes that, although
+present-day computers are extremely powerful in terms of computational speed,
+reliability, and amount of memory available, they are less than ideal – unless
+supplemented by appropriate software – when it comes to the precision available,
+and accuracy attainable, in the execution of elementary arithmetic operations. This
+raises serious questions as to how arithmetic errors, either present in the input
+data of a problem or committed during the execution of a solution algorithm,
+affect the accuracy of the desired results. Concepts and tools required to answer
+such questions are put forward in this introductory chapter. In Chap. 2, the central
+theme is the approximation of functions by simpler functions, typically polynomials
+and piecewise polynomial functions. Approximation in the sense of least squares
+provides an opportunity to introduce orthogonal polynomials, which are relevant
+also in connection with problems of numerical integration treated in Chap. 3. A large
+part of the chapter, however, deals with polynomial interpolation and associated
+error estimates, which are basic to many numerical procedures for integrating
+functions and differential equations. Also discussed briefly is inverse interpolation,
+an idea useful in solving equations.
+First applications of interpolation theory are given in Chap. 3, where the tasks
+presented are the computation of derivatives and definite integrals. Although the
+formulae developed for derivatives are subject to the detrimental effects of machine
+arithmetic, they are useful, nevertheless, for purposes of discretizing differential
+operators. The treatment of numerical integration includes routine procedures, such
+as the trapezoidal and Simpson’s rules, appropriate for well-behaved integrands, as
+well as the more sophisticated procedures based on Gaussian quadrature to deal
+with singularities. It is here where orthogonal polynomials reappear. The method of
+undetermined coefficients is another technique for developing integration formulae.
+It is applied to approximate general linear functionals, the Peano representation
+of linear functionals providing an important tool for estimating the error. The
+chapter ends with a discussion of extrapolation techniques; although applicable to
+more general problems, they are inserted here since the composite trapezoidal rule
+together with the Euler–Maclaurin formula provides the best-known application –
+Romberg integration.
+Chapter 4 deals with iterative methods for solving nonlinear equations and
+systems thereof, the pièce de résistance being Newton’s method. The emphasis here
+lies in the study of, and the tools necessary to analyze, convergence. The special
+case of algebraic equations is also briefly given attention.
+Chapter 5 is the first of three chapters devoted to the numerical solution of
+ordinary differential equations. It concerns itself with one-step methods for solving
+initial value problems, such as the Runge–Kutta method, and gives a detailed
+analysis of local and global errors. Also included is a brief introduction to stiff
+equations and special methods to deal with them. Multistep methods and, in
+particular, Dahlquist’s theory of stability and its applications, is the subject of
+Chap. 6. The final chapter (Chap. 7) is devoted to boundary value problems and their
+solution by shooting methods, finite difference techniques, and variational methods.
+
+P2 Numerical Analysis Software
+There are many software packages available, both in the public domain and dis-
+tributed commercially, that deal with numerical analysis algorithms. A widely used
+source of numerical software is Netlib, accessible at http://www.netlib.org.
+Large collections of general-purpose numerical algorithms are contained in
+sources such as Slatec (http://www.netlib.org/slatec) and TOMS
+(ACM Transactions on Mathematical Software). Specialized packages relevant
+to the topics in the chapters ahead are identified in the “Notes” to each chapter.
+Likewise, specific files needed to do some of the machine assignments in the
+Exercises are identified as part of the exercise.
+Among the commercial software packages we mention the Visual Numerics
+(formerly IMSL) and NAG libraries. Interactive systems include HiQ, Macsyma,
+Maple, Mathcad, Mathematica, and Matlab. Many of these packages, in addition
+to numerical computation, have symbolic computation and graphics capabilities.
+Further information is available in the Netlib file commercial. For more libraries,
+and for interactive systems, also see Lozier and Olver [1994, Sect. 3].
+In this text we consistently use Matlab as a vehicle for describing algorithms
+and as the software tool for carrying out some of the exercises and all machine
+assignments.
+P3 Textbooks and Monographs
+We provide here an annotated list (ordered alphabetically with respect to authors)
+of other textbooks on numerical analysis, written at about the same, or higher, level
+as the present one. Following this, we also mention books and monographs dealing
+with topics in computational mathematics not covered in our (and many other) books
+on numerical analysis. Additional books dealing with specialized subject areas, as
+well as other literature, are referenced in the “Notes” to the individual chapters. We
+generally restrict ourselves to books written in English and, with a few exceptions,
+published within the last 25 years or so. Even so, we have had to be selective. (No
+value judgment is to be implied by our selections or omissions.) A reader with access
+to the AMS (American Mathematical Society) MathSci Net homepage will have no
+difficulty in retrieving a more complete list of relevant items, including older texts.
+P3.1 Selected Textbooks on Numerical Analysis
+Atkinson [1989] A comprehensive in-depth treatment of standard topics short of
+partial differential equations; includes an appendix describing some of the better-
+known software packages.
+
+Chapter 1
+Machine Arithmetic and Related Matters
+The questions addressed in this first chapter are fundamental in the sense that
+they are relevant in any situation that involves numerical machine computation,
+regardless of the kind of problem that gave rise to these computations. In the first
+place, one has to be aware of the rather primitive type of number system available
+on computers. It is basically a finite system of numbers of finite length, thus a far cry
+from the idealistic number system familiar to us from mathematical analysis. The
+passage from a real number to a machine number entails rounding, and thus small
+errors, called roundoff errors. Additional errors are introduced when the individual
+arithmetic operations are carried out on the computer. In themselves, these errors
+are harmless, but acting in concert and propagating through a lengthy computation,
+they can have significant – even disastrous – effects.
+Most problems involve input data not representable exactly on the computer.
+Therefore, even before the solution process starts, simply by storing the input in
+computer memory, the problem is already slightly perturbed, owing to the necessity
+of rounding the input. It is important, then, to estimate how such small perturbations
+in the input affect the output, the solution of the problem. This is the question of
+the (numerical) condition of a problem: the problem is called well conditioned if the
+changes in the solution of the problem are of the same order of magnitude as the
+perturbations in the input that caused those changes. If, on the other hand, they
+are much larger, the problem is called ill conditioned. It is desirable to measure by
+a single number – the condition number of the problem – the extent to which the
+solution is sensitive to perturbations in the input. The larger this number, the more
+ill conditioned the problem.
+Once the solution process starts, additional rounding errors will be committed,
+which also contaminate the solution. The resulting errors, in contrast to those
+caused by input errors, depend on the particular solution algorithm. It makes sense,
+therefore, to also talk about the condition of an algorithm, although its analysis is
+usually quite a bit harder. The quality of the computed solution is then determined
+by both (essentially the product of) the condition of the problem and the condition
+of the algorithm.
+
+1.1 Real Numbers, Machine Numbers, and Rounding
+We begin with the number system commonly used in mathematical analysis and
+confront it with the more primitive number system available to us on any particular
+computer. We identify the basic constant (the machine precision) that determines
+the level of precision attainable on such a computer.
+1.1.1 Real Numbers
+One can introduce real numbers in many different ways. Mathematicians favor
+the axiomatic approach, which leads them to define the set of real numbers as a
+“complete Archimedean ordered field.” Here we adopt a more pedestrian attitude
+and consider the set of real numbers R to consist of positive and negative numbers
+represented in some appropriate number system and manipulated in the usual
+manner known from elementary arithmetic. We adopt here the binary number
+system, since it is the one most commonly used on computers. Thus,
+x 2 R iff x D ˙ .bn 2n C bn␃1 2n␃1 C ␂ ␂ ␂ C b0 C b␃1 2␃1 C b␃2 2␃2 C ␂ ␂ ␂ /: (1.1)
+Here n ␃ 0 is some integer, and the “binary digits” bi are either 0 or 1,
+bi D 0 or bi D 1 for all i:
+(1.2)
+It is important to note that in general we need infinitely many binary digits to
+represent a real number. We conveniently write such a number in the abbreviated
+form (familiar from the decimal number system)
+x D ˙ .bn bn␃1 ␂ ␂ ␂ b0 : b␃1 b␃2 b␃3 ␂ ␂ ␂ /2 ;
+(1.3)
+where the subscript 2 at the end is to remind us that we are dealing with a binary
+number. (Without this subscript, the number could also be read as a decimal number,
+which would be a source of ambiguity.) The dot in (1.3) – appropriately called the
+binary point – separates the integer part on the left from the fractional part on the
+right. Note that representation (1.3) is not unique, for example, .0:0111 : : :/2 D
+.0:1/2 . We regain uniqueness if we always insist on a finite representation, if one
+exists.
+1
+Examples. 1. .10011:01/2 D 24 C 21 C 20 C 2␃2 = 16 C 2 C 1 C D .19:25/10
+4
+1
+1
+1 ␂ ␃m
+X
+X
+X
+1
+1
+2. .:010101 : : :/2 D
+2␃k D
+2␃2m D
+4
+4
+kD2
+mD1
+mD0
+.k even/
+1
+1
+D 1␃1 1 D D .0:333 : : :/10
+4
+3
+4
+
+3.
+3
+1
+D .0:2/10 D .0:00110011 : : :/2
+5
+To determine the binary digits on the right, one keeps multiplying by 2 and
+observing the integer part in the result; if it is zero, the binary digit in question
+is 0, otherwise 1. In the latter case, the integral part is removed and the process
+repeated.
+The last example is of interest insofar as it shows that to a finite decimal number
+there may correspond a (nontrivial) infinite binary representation. One cannot
+assume, therefore, that a finite decimal number is exactly representable on a binary
+computer. Conversely, however, to a finite binary number there always corresponds
+a finite decimal representation. (Why?)
+1.1.2 Machine Numbers
+There are two kinds of machine numbers: floating point and fixed point. The first
+corresponds to the “scientific notation” in the decimal system, whereby a number is
+written as a decimal fraction times an integral power of 10. The second allows only
+for fractions. On a binary computer, one consistently uses powers of 2 instead of 10.
+More important, the number of binary digits, both in the fraction and in the exponent
+of 2 (if any), is finite and cannot exceed certain limits that are characteristics of the
+particular computer at hand.
+1.1.2.1 Floating-Point Numbers
+We denote by t the number of binary digits allowed by the computer in the fractional
+part and by s the number of binary digits in the exponent. Then the set of (real)
+floating-point numbers on that computer will be denoted by R.t; s/. Thus,
+x 2 R.t; s/ iff x D f ␂ 2e ;
+(1.4)
+where, in the notation of (1.3),
+f D ˙ .: b␃1 b␃2 ␂ ␂ ␂ b␃t /2 ; e D ˙ .cs␃1 cs␃2 ␂ ␂ ␂ c0 :/2 :
+(1.5)
+Here all bi and cj are binary digits, that is, either zero or one. The binary fraction
+f is usually referred to as the mantissa of x and the integer e as the exponent of x.
+The number x in (1.4) is said to be normalized if in its fraction f we have b␃1 D 1.
+We assume that all numbers in R.t; s/ are normalized (with the exception of x D 0,
+which is treated as a special number). If x ¤ 0 were not normalized, we could
+
+multiply f by an appropriate power of 2, to normalize it, and adjust the exponent
+accordingly. This is always possible as long as the adjusted exponent is still in the
+admissible range.
+We can think of a floating-point number (1.4) as being accommodated in a
+machine register as shown in Fig. 1.1. The figure does not quite correspond to reality,
+but is close enough to it for our purposes.
+Note that the set (1.4) of normalized floating-point numbers is finite and is thus
+represented by a finite set of points on the real line. What is worse, these points are
+not uniformly distributed (cf. Ex. 1). This, then, is all we have to work with!
+It is immediately clear from (1.4) and (1.5) that the largest and smallest
+magnitude of a (normalized) floating-point number is given, respectively, by
+max jxj D .1 ␄ 2␃t / 22 ␃1 ;
+s
+x2R.t;s/
+min jxj D 2␃2 :
+s
+x2R.t;s/
+(1.6)
+On a Sun Sparc workstation, for example, one has t D 23, s D 7, so that the
+maximum and minimum in (1.6) are 1:70 ␅ 1038 and 2:94 ␅ 10␃39 , respectively.
+(Because of an asymmetric internal hardware representation of the exponent on
+these computers, the true range of floating-point numbers is slightly shifted, more
+like from 1:18 ␅ 10␃38 to 3:40 ␅ 1038 .) Matlab arithmetic, essentially double
+precision, uses t D 53 and s D 10, which greatly expands the number range from
+something like 10␃308 to 10C308 .
+A real nonzero number whose modulus is not in the range determined by (1.6)
+cannot be represented on this particular computer. If such a number is produced
+during the course of a computation, one says that overflow has occurred if its
+modulus is larger than the maximum in (1.6) and underflow if it is smaller than
+the minimum in (1.6). The occurrence of overflow is fatal, and the machine (or its
+operating system) usually prompts the computation to be interrupted. Underflow
+is less serious, and one may get away with replacing the delinquent number by
+zero. However, this is not foolproof. Imagine that at the next step the number that
+underflowed is to be multiplied by a huge number. If the replacement by zero has
+been made, the result will always be zero.
+To increase the precision, one can use two machine registers to represent a
+machine number. In effect, one then embeds R.t; s/ ␆ R.2t; s/, and calls x 2
+R.2t; s/ a double-precision number.
+
+1.1.2.2 Fixed-Point Numbers
+This is the case (1.4) where e = 0. That is, fixed-point numbers are binary fractions,
+x D f , hence jf j < 1. We can therefore only deal with numbers that are in
+the interval (–1,1). This, in particular, requires extensive scaling and rescaling to
+make sure that all initial data, as well as all intermediate and final results, lie in that
+interval. Such a complication can only be justified in special circumstances where
+machine time and/or precision is at a premium. Note that on the same computer as
+considered before, we do not need to allocate space for the exponent in the machine
+register, and thus have in effect s Ct binary digits available for the fraction f , hence
+more precision; cf. Fig. 1.2.
+1.1.2.3 Other Data Structures for Numbers
+Complex floating-point numbers consist of pairs of real floating-point numbers,
+the first of the pair representing the real part and the second the imaginary part.
+To avoid rounding errors in arithmetic operations altogether, one can employ
+rational arithmetic, in which each (rational) number is represented by a pair
+of extended-precision integers – the numerator and denominator of the rational
+number. The Euclidean algorithm is used to remove common factors. A device
+that allows keeping track of error propagation and the influence of data errors is
+interval arithmetic involving intervals guaranteed to contain the desired numbers. In
+complex arithmetic, one employs rectangular or circular domains.
+1.1.3 Rounding
+A machine register acts much like the infamous Procrustes bed in Greek mythology.
+Procrustes was the innkeeper whose inn had only beds of one size. If a fellow came
+along who was too tall to fit into his beds, he cut off his feet. If the fellow was too
+short, he stretched him. In the same way, if a real number comes along that is too
+long, its tail end (not the head) is cutoff; if it is too short, it is padded by zeros at
+the end.
+
+More specifically, let
+1
+X
+x 2 R; x D ˙
+!
+b␃k 2
+␃k
+2e
+(1.7)
+kD1
+be the “exact” real number (in normalized floating-point form) and
+␄
+␄
+x 2 R.t; s/; x D ˙
+t
+X
+!
+␄ ␃k
+b␃k
+2
+2e
+␂
+(1.8)
+kD1
+the rounded number. One then distinguishes between two methods of rounding, the
+first being Procrustes’ method.
+(a) Chopping. One takes
+␄
+x ␄ D chop.x/; e␄ D e; b␃k
+D b␃k for k D 1; 2; : : : ; t:
+(1.9)
+(b) Symmetric rounding. This corresponds to the familiar rounding up or rounding
+down in decimal arithmetic, based on the first discarded decimal digit: if it is
+larger than or equal to 5, one rounds up; if it is less than 5, one rounds down. In
+binary arithmetic, the procedure is somewhat simpler, since there are only two
+possibilities: either the first discarded binary digit is 1, in which case one rounds
+up, or it is 0, in which case one rounds down. We can write the procedure very
+simply in terms of the chop operation in (1.9):
+␃
+␂
+1 ␃t e
+x D rd.x/; rd.x/ WD chop x C ␂ 2 ␂ 2 :
+2
+␄
+(1.10)
+There is a small error incurred in rounding, which is most easily estimated in the
+case of chopping. Here the absolute error jx ␄ x ␄ j is
+ˇ
+ˇ
+1
+ˇ
+ˇ X
+ˇ
+␃k ˇ e
+b␃k 2 ˇ 2
+jx ␄ chop.x/j D ˇ˙
+ˇ
+ˇ
+kDt C1
+␇
+1
+X
+2␃k ␂ 2e D 2␃t ␂ 2e :
+kDt C1
+It depends on e (i.e., the magnitude of x), which is the reason why one prefers the
+relative error j.x ␄ x ␄ /=xj (if x ¤ 0), which, for normalized x, can be estimated as
+ˇ
+ˇ
+ˇ x ␄ chop.x/ ˇ
+2␃t ␂ 2e
+2␃t ␂ 2e
+ˇ␇ ˇ
+ˇ
+ˇ ␇ 1
+D 2 ␂ 2␃t :
+ˇ
+ˇ
+1
+e
+ˇ X
+ˇ
+x
+␂
+2
+ˇ
+ˇ
+2
+ˇ˙ b␃k 2␃k ˇ 2e
+ˇ
+ˇ
+kD1
+(1.11)
+
+Similarly, in the case of symmetric rounding, one finds (cf. Ex. 6)
+ˇ
+ˇ
+ˇ x ␄ rd.x/ ˇ
+ˇ ␇ 2␃t :
+ˇ
+ˇ
+ˇ
+x
+(1.12)
+The number on the right is an important, machine-dependent quantity, called the
+machine precision (or unit roundoff),
+eps D 2␃t I
+(1.13)
+it determines the level of precision of any large-scale floating-point computation.
+In Matlab double-precision arithmetic, one has t = 53, so that eps ␈ 1:11 ␅ 10␃16
+(cf. Ex. 5), corresponding to a precision of 15–16 significant decimal digits.
+Since it is awkward to work with inequalities, one prefers writing (1.12)
+equivalently as an equality,
+rd.x/ D x.1 C "/; j"j ␇ eps;
+(1.14)
+and defers dealing with the inequality (for ") to the very end.
+1.2 Machine Arithmetic
+The arithmetic used on computers unfortunately does not respect the laws of
+ordinary arithmetic. Each elementary floating-point operation, in general, generates
+a small error that may then propagate through subsequent machine operations. As
+a rule, this error propagation is harmless, except in the case of subtraction, where
+cancellation effects may seriously compromise the accuracy of the results.
+1.2.1 A Model of Machine Arithmetic
+Any of the four basic arithmetic operations, when applied to two machine numbers,
+may produce a result no longer representable on the computer. We have therefore
+errors also associated with arithmetic operations. Barring the occurrence of overflow
+or underflow, we may assume as a model of machine arithmetic that each arithmetic
+operation ı .D C; ␄; ␅; =/ produces a correctly rounded result. Thus, if x; y 2
+R.t; s/ are floating-point machine numbers, and fl.xıy/ denotes the machine-
+produced result of the arithmetic operation xıy, then
+fl.xıy/ D xıy .1 C "/; j"j ␇ eps:
+(1.15)
+
+This can be interpreted in a number of ways, for example, in the case of
+multiplication,
+p
+p
+fl.x ␅ y/ D Œx.1 C "/␃ ␅ y D x ␅ Œy.1 C "/␃ D .x 1 C "/ ␅ .y 1 C "/ D ␂ ␂ ␂ :
+In each equation we identify the computed result as the exact result on data that are
+slightly perturbed, whereby the respective relative perturbations
+can be estimated,
+ˇ ˇ
+p
+for example, by j"j ␇ eps in the first two equations, and 1 C ␄ ␈ 1 C 12 ", ˇ 12 "ˇ ␇
+1
+2 eps in the third. These are elementary examples of backward error analysis, a
+powerful tool for estimating errors in machine computation (cf. also Sect. 1.3).
+Even though a single arithmetic operation causes a small error that can be
+neglected, a succession of arithmetic operations can well result in a significant error,
+owing to error propagation. It is like the small microorganisms that we all carry in
+our bodies: if our defense mechanism is in good order, the microorganisms cause no
+harm, in spite of their large presence. If for some reason our defenses are weakened,
+then all of a sudden they can play havoc with our health. The same is true in machine
+computation: the rounding errors, although widespread, will cause little harm unless
+our computations contain some weak spots that allow rounding errors to take over
+to the point of completely invalidating the results. We learn about one such weak
+spot (indeed the only one) in the next section.1
+1.2.2 Error Propagation in Arithmetic Operations:
+Cancellation Error
+We now study the extent to which the basic arithmetic operations propagate
+errors already present in their operands. Previously, in Sect. 1.2.1, we assumed the
+1
+Rounding errors can also have significant implications in real life. One example, taken from
+politics, concerns the problem of apportionment: how should the representatives in an assembly,
+such as the US House of Representatives or the Electoral College, be constituted to fairly reflect
+the size of population in the various states? If the total number of representatives in the assembly
+is given, say, A, the total population of the US is P , and the population of State i is pi , then State
+i should be allocated
+pi
+A
+ri D
+P
+representatives. The problem is that ri is not an integer, in general. How then should ri be rounded
+to an integer ri␂ ? One can think of three natural criteria to be imposed: (1) ri␂ should be one
+of the two integers closest to ri (“quota condition”). (2) If A is increased, all other things being
+the same, then ri␂ should not decrease (“house monotonicity”). (3) If pi is increased, the other pj
+remaining constant, then ri␂ should not decrease (“population monotonicity”). Unfortunately, there
+is no apportionment method that satisfies all three criteria. There is indeed a case in US history
+when Samuel J. Tilden lost his bid for the presidency in 1876 in favor of Rutherford B. Hayes,
+purely on the basis of the apportionment method adopted on that occasion (which, incidentally,
+was not the one prescribed by law at the time)
+
+operands to be exact machine-representable numbers and discussed the errors due to
+imperfect execution of the arithmetic operations by the computer. We now change
+our viewpoint and assume that the operands themselves are contaminated by errors,
+but the arithmetic operations are carried out exactly. (We already know what to do,
+cf. (1.15), when we are dealing with machine operations.) Our interest is in the
+errors in the results caused by errors in the data.
+(a) Multiplication. We consider values x.1 C "x / and y.1 C "y / of x and y
+contaminated by relative errors "x and "y , respectively. What is the relative error
+in the product? We assume "x , "y sufficiently small so that quantities of second
+order, "2x , "x "y , "2y – and even more so, quantities of still higher order – can be
+neglected against the epsilons themselves. Then
+x.1 C "x / ␂ y.1 C "y / D x ␂ y .1 C "x C "y C "x "y / ␈ x ␂ y .1 C "x C "y /:
+Thus, the relative error "x␅y in the product is given (at least approximately) by
+"x␅y D "x C "y ;
+(1.16)
+that is, the (relative) errors in the data are being added to produce the (relative)
+error in the result. We consider this to be acceptable error propagation, and in
+this sense, multiplication is a benign operation.
+(b) Division. Here we have similarly (if y ¤ 0)
+x
+x.1 C "x /
+D .1 C "x /.1 ␄ "y C "2y ␄ C ␂ ␂ ␂ /
+y.1 C "y /
+y
+x
+␈ .1 C "x ␄ "y /;
+y
+that is,
+"x=y D "x ␄ "y :
+(1.17)
+Also division is a benign operation.
+(c) Addition and subtraction. Since x and y can be numbers of arbitrary signs, it
+suffices to look at addition. We have
+x.1 C "x / C y.1 C "y / D x C y C x"x C y"y
+␃
+␂
+x"x C y"y
+;
+D .x C y/ 1 C
+xCy
+assuming x C y ¤ 0. Therefore,
+"xCy D
+x
+y
+"x C
+"y :
+xCy
+xCy
+(1.18)
+
+As before, the error in the result is a linear combination of the errors in the
+data, but now the coefficients are no longer ˙1 but can assume values that are
+arbitrarily large. Note first, however, that when x and y have the same sign, then
+both coefficients are positive and bounded by 1, so that
+j"xCy j ␇ j"x j C j"y j
+.x ␂ y > 0/I
+(1.19)
+addition, in this case, is again a benign operation. It is only when x and y have
+opposite signs that the coefficients in (1.18) can be arbitrarily large, namely, when
+jx C yj is arbitrarily small compared to jxj and jyj. This happens when x and y are
+almost equal in absolute value, but opposite in sign. The large magnification of error
+then occurring in (1.18) is referred to as cancellation error. It is the only serious
+weakness – the Achilles heel, as it were – of numerical computation, and it should
+be avoided whenever possible. In particular, one should be prepared to encounter
+cancellation effects not only in single devastating amounts, but also repeatedly over
+a long period of time involving “small doses” of cancellation. Either way, the end
+result can be disastrous.
+We illustrate the cancellation phenomenon schematically in Fig. 1.3, where b,
+b 0 , b 00 stand for binary digits that are reliable, and the g represent binary digits
+contaminated by error; these are often called “garbage” digits. Note in Fig. 1.3 that
+“garbage – garbage D garbage,” but, more importantly, that the final normalization
+of the result moves the first garbage digit from the 12th position to the 3rd.
+Cancellation is such a serious matter that we wish to give a number of elementary
+examples, not only of its occurrence, but also of how it might be avoided.
+Examples. 1. An algebraic identity: .a ␄ b/2 D a2 ␄ 2ab C b 2 . Although this is
+a valid identity in algebra, it is no longer valid in machine arithmetic. Thus, on
+a 2-decimal-digit computer, with a D 1.8, b D 1.7, we get, using symmetric
+rounding,
+fl.a2 ␄ 2ab C b 2 / D 3:2 ␄ 6:2 C 2:9 D ␄0:10
+instead of the true result 0.010, which we obtain also on our 2-digit computer
+if we use the left-hand side of the identity. The expanded form of the square
+thus produces a result which is off by one order of magnitude and on top has
+the wrong sign.
+
+2. Quadratic equation: x 2 ␄ 56x C 1 D 0. The usual formula for a quadratic gives,
+in 5-decimal arithmetic,
+x1 D 28 ␄
+p
+783 D 28 ␄ 27:982 D 0:018000;
+x2 D 28 C
+p
+783 D 28 C 27:982 D 55:982:
+This should be contrasted with the exact roots 0.0178628. . . and 55.982137. . . .
+As can be seen, the smaller of the two is obtained to only two correct decimal
+digits, owing to cancellation. An easy way out, of course, is to compute x2 first,
+which involves a benign addition, and then to compute x1 D 1=x2 by Vieta’s
+formula, which again involves a benign operation – division. In this way we
+obtain both roots
+accuracy.
+pto full machine
+p
+3. Compute y D x C ı – x, where x > 0 and jıj is very small. Clearly, the
+formula as written causes severe cancellation errors, since each square root has
+to be rounded. Writing instead
+ı
+yD p
+p
+xCıC x
+completely removes the problem.
+4. Compute y D cos.x C ı/ ␄ cos x, where jıj is very small. Here cancellation
+can be avoided by writing y in the equivalent form
+␂
+␃
+ı
+ı
+:
+y D ␄2 sin sin x C
+2
+2
+5. Compute y D f .x C ı/ ␄ f .x/, where jıj is very small and f a given function.
+Special tricks, such as those used in the two preceding examples, can no longer
+be played, but if f is sufficiently smooth in the neighborhood of x, we can use
+Taylor expansion:
+1
+y D f 0 .x/ı C f 00 .x/ı 2 C ␂ ␂ ␂ :
+2
+The terms in this series decrease rapidly when jıj is small so that cancellation
+is no longer a problem.
+Addition is an example of a potentially ill-conditioned function (of two vari-
+ables). It naturally leads us to study the condition of more general functions.
+1.3 The Condition of a Problem
+A problem typically has an input and an output. The input consists of a set of
+data, say, the coefficients of some equation, and the output of another set of
+numbers uniquely determined by the input, say, all the roots of the equation in some
+prescribed order. If we collect the input in a vector x 2 Rm (assuming the data
+
+consist of real numbers), and the output in the vector y 2 Rn (also assumed real),
+we have the black box situation shown in Fig. 1.4, where the box P accepts some
+input x and then solves the problem for this input to produce the output y.
+We may thus think of a problem as a map f , given by
+f W Rm ! Rn ; y D f .x/:
+(1.20)
+(One or both of the spaces Rm , Rn could be complex spaces without changing in any
+essential way the discussion that follows.) What we are interested in is the sensitivity
+of the map f at some given point x to a small perturbation of x, that is, how much
+bigger (or smaller) the perturbation in y is compared to the perturbation in x. In
+particular, we wish to measure the degree of sensitivity by a single number – the
+condition number of the map f at the point x. We emphasize that, as we perturb
+x, the function f is always assumed to be evaluated exactly, with infinite precision.
+The condition of f , therefore, is an inherent property of the map f and does not
+depend on any algorithmic considerations concerning its implementation.
+This is not to say that knowledge of the condition of a problem is irrelevant
+to any algorithmic solution of the problem. On the contrary, the reason is that
+quite often the computed solution y␄ of (1.20) (computed in floating-point machine
+arithmetic, using a specific algorithm) can be demonstrated to be the exact solution
+to a “nearby” problem, that is,
+y␄ D f .x␄ /;
+(1.21)
+where x␄ is a vector close to the given data x,
+x␄ D x C ı;
+(1.22)
+and moreover, the distance kık of x␄ to x can be estimated in terms of the machine
+precision. Therefore, if we know how strongly (or weakly) the map f reacts to a
+small perturbation, such as ı in (1.22), we can say something about the error y␄ ␄ y
+in the solution caused by this perturbation. This, indeed, is an important technique
+of error analysis – known as backward error analysis – which was pioneered in the
+1950s by J. W. Givens, C. Lanczos, and, above all, J. H. Wilkinson.
+Maps f between more general spaces (in particular, function spaces) have also
+been considered from the point of view of conditioning, but eventually, these spaces
+have to be reduced to finite-dimensional spaces for practical implementation of the
+maps in question.
+
+1.3.1 Condition Numbers
+We start with the simplest case of a single function of one variable.
+The case m D n D 1: y D f .x/. Assuming first x ¤ 0, y ¤ 0, and denoting
+by ␂x a small perturbation of x, we have for the corresponding perturbation ␂y by
+Taylor’s formula
+␂y D f .x C ␂x/ ␄ f .x/ ␈ f 0 .x/␂x;
+(1.23)
+assuming that f is differentiable at x. Since our interest is in relative errors, we
+write this in the form
+xf 0 .x/ ␂x
+␂y
+␈
+␂
+:
+(1.24)
+y
+f .x/
+x
+The approximate equality becomes a true equality in the limit as ␂x ! 0. This
+suggests that the condition of f at x be defined by the quantity
+ˇ
+ˇ 0
+ˇ xf .x/ ˇ
+ˇ:
+.cond f /.x/ WD ˇˇ
+f .x/ ˇ
+(1.25)
+This number tells us how much larger the relative perturbation in y is compared to
+the relative perturbation in x.
+If x D 0 and y ¤ 0, it is more meaningful to consider the absolute error
+measure for x and for y still the relative error. This leads to the condition number
+jf 0 .x/=f .x/j. Similarly for y D 0, x ¤ 0. If x D y D 0, the condition number by
+(1.23) would then simply be jf 0 .x/j.
+The case of arbitrary m; n: here we write
+x D Œx1 ; x2 ; : : : ; xm ␃T 2 Rm ; y D Œy1 ; y2 ; : : : ; yn ␃T 2 Rn
+and exhibit the map f in component form
+y␅ D f␅ .x1 ; x2 ; : : : ; xm /; ␅ D 1; 2; : : : ; n:
+(1.26)
+We assume again that each function f␅ has partial derivatives with respect to all m
+variables at the point x. Then the most detailed analysis departs from considering
+each component y␅ as a function of one single variable, x␆ . In other words, we
+subject only one variable, x␆ , to a small change and observe the resulting change in
+just one component, y␅ . Then we can apply (1.25) and obtain
+ˇ
+ˇ
+ˇ x @f␅ ˇ
+ˇ ␆ @x␆ ˇ
+ˇ :
+␇␅␆ .x/ WD .cond␅␆ f /.x/ WD ˇˇ
+ˇ
+ˇ f␅ .x/ ˇ
+(1.27)
+
+This gives us a whole matrix ␂.x/ D Œ␇␅␆ .x/␃ 2 Rn␆m
+of condition numbers.
+C
+To obtain a single condition number, we can take any convenient measure of the
+“magnitude” of the matrix ␂ .x/ such as one of the matrix norms defined in (1.30),
+.cond f /.x/ D k␂.x/k; ␂ .x/ D Œ␇␅␆ .x/␃:
+(1.28)
+The condition so defined, of course, depends on the choice of norm, but the order
+of magnitude (and that is all that counts) should be more or less the same for any
+reasonable norm.
+If a component of x, or of y, vanishes, one modifies (1.27) as discussed earlier.
+A less-refined analysis can be modeled after the one-dimensional case by
+defining the relative perturbation of x 2 Rm to mean
+k␂xkRm
+; ␂x D Œ␂x1 ; ␂x2 ; : : : ; ␂xm ␃T ;
+kxkRm
+(1.29)
+where ␂x is a perturbation vector whose components ␂x␆ are small compared to
+x␆ , and where k ␂ kRm is some vector norm in Rm . For the perturbation ␂y caused by
+␂x, one defines similarly the relative perturbation k␂ykRn =kykRn , with a suitable
+vector norm k ␂ kRn in Rn . One then tries to relate the relative perturbation in y to
+the one in x.
+To carry this out, one needs to define a matrix norm for matrices A 2 Rn␆m . We
+choose the so-called “operator norm,”
+kAxkRn
+:
+x 2R
+kxkRm
+x ¤0
+kAkRn␃m WD max
+m
+(1.30)
+In the following we take for the vector norms the “uniform” (or infinity) norm,
+kxkRm D max jx␆ j DW kxk1 ; kykRn D max jy␅ j DW kyk1 :
+1␇␆␇m
+1␇␅␇n
+(1.31)
+It is then easy to show that (cf. Ex. 32)
+kAkRn␃m D kAk1 WD max
+1␇␅␇n
+m
+X
+ja␅␆ j; A D Œa␅␆ ␃ 2 Rn␆m :
+␆D1
+Now in analogy to (1.23), we have
+␂y␅ D f␅ .x C ␂x/ ␄ f␅ .x/ ␈
+m
+X
+@f␅
+␆D1
+@x␆
+␂x␆
+
+with the partial derivatives evaluated at x. Therefore, at least approximately,
+ˇ
+ˇ
+m ˇ
+m ˇ
+X
+X
+ˇ @f␅ ˇ
+ˇ @f␅ ˇ
+ˇ
+ˇ
+ˇ
+ˇ
+j␂y␅ j ␇
+j␂x␆ j ␂
+ˇ @x ˇ j␂x␆ j ␇ max
+ˇ @x ˇ
+␆
+␆D1
+␆
+␆
+␆D1
+␇ max j␂x␆ j ␂ max
+␆
+␅
+ˇ
+m ˇ
+X
+ˇ @f␅ ˇ
+ˇ
+ˇ
+ˇ @x ˇ :
+␆D1
+␆
+Since this holds for each ␅ D 1; 2; : : : ; n, it also holds for max j␂y␅ j, giving, in
+␅
+view of (1.31) and (1.32),
+␄
+␄
+␄ @f ␄
+␄
+k␂yk1 ␇ k␂xk1 ␄
+␄ @x ␄ :
+1
+Here,
+2
+@f1
+6
+6 @x1
+6
+6 @f2
+6
+6
+@f
+@x1
+D6
+6
+@x
+6
+6 ␂
+6
+6
+4 @fn
+@x1
+@f1
+@x2
+@f2
+@x2
+␂␂␂
+␂␂␂
+␂␂␂␂
+@fn
+@x2␂␂␂
+3
+@f1
+7
+@xm 7
+7
+@f2 7
+7
+7
+@xm 7 2 Rn␆m
+7
+7
+␂ 7
+7
+7
+@fn 5
+@xm
+(1.33)
+(1.34)
+is the Jacobian matrix of f . (This is the analogue of the first derivative for systems
+of functions of several variables.) From (1.33) one now immediately obtains for the
+relative perturbations
+k␂yk1
+kxk1 k@f =@xk1 k␂xk1
+␇
+␂
+:
+kyk1
+kf .x/k1
+kxk1
+Although this is an inequality, it is sharp in the sense that equality can be achieved
+for a suitable perturbation ␂x. We are justified, therefore, in defining a global
+condition number by
+.cond f /.x/ WD
+kxk1 k@f =@xk1
+:
+kf .x/k1
+(1.35)
+Clearly, in the case m D n D 1, definition (1.35) reduces precisely to definition
+(1.25) (as well as (1.28)) given earlier. In higher dimensions (m and/or n larger than
+1), however, the condition number in (1.35) is much cruder than the one in (1.28).
+This is because norms tend to destroy detail: if x, for example, has components
+
+of vastly different magnitudes, then kxk1 is simply equal to the largest of these
+components, and all the others are ignored. For this reason, some caution is required
+when using (1.35).
+To give an example, consider
+2
+3
+2 3
+1
+1
+6
+7
+C
+6 x1 7
+6
+x2 7
+7
+f .x/ D 6 x1
+7; x D 6
+4 5:
+4 1
+1 5
+␄
+x2
+x1 x2
+The components of the condition matrix ␂.x/ in (1.27) are then
+ˇ
+ˇ
+␇11 D ˇˇ
+ˇ
+ˇ
+ˇ
+ˇ
+ˇ
+ˇ
+ˇ
+ˇ x1 ˇ
+ˇ x2 ˇ
+ˇ x1 ˇ
+x2 ˇˇ
+ˇ
+ˇ
+ˇ
+ˇ
+ˇ
+ˇ
+;
+␇
+;
+␇
+;
+␇
+D
+D
+D
+12
+ˇ x C x ˇ 21 ˇ x ␄ x ˇ 22 ˇ x ␄ x ˇ ;
+x1 C x2 ˇ
+1
+2
+2
+1
+2
+1
+indicating ill-conditioning if either x1 ␈ x2 or x1 ␈ ␄x2 and jx1 j (hence also jx2 j)
+is not small. The global condition number (1.35), on the other hand, since
+2
+3
+6 x22x12
+x22␄x12
+@f
+1
+.x/ D ␄ 2 2 6
+@x
+x1 x2 4
+7
+7;
+5
+becomes, when L1 vector and matrix norms are used (cf. Ex. 33),
+kxk1 ␂
+.cond f /.x/ D
+2
+max.x12 ; x22 /
+x12 x22
+1
+.jx1 C x2 j C jx1 ␄ x2 j/
+jx1 x2 j
+D2
+max.x12 ; x22 /
+jx1 j C jx2 j
+:
+jx1 x2 j jx1 C x2 j C jx1 ␄ x2 j
+Here x1 ␈ x2 or x1 ␈ ␄x2 yields .cond f /.x/ ␈ 2, which is obviously misleading.
+1.3.2 Examples
+We illustrate the idea of numerical condition in a number of examples, some of
+which are of considerable interest in applications.
+Z 1 n
+t
+dt for some fixed integer n ␃ 1. As it stands, the
+1. Compute In D
+0 t C5
+example here deals with a map from the integers to reals and therefore does
+
+not fit our concept of “problem” in (1.20). However, we propose to compute In
+recursively by relating Ik to Ik␃1 and noting that
+Z 1
+I0 D
+0
+ˇ1
+ˇ
+dt
+6
+D ln.t C 5/ˇˇ D ln :
+t C5
+5
+0
+(1.36)
+To find the recursion, observe that
+t
+5
+D1␄
+:
+t C5
+t C5
+Thus, multiplying both sides by t k␃1 and integrating from 0 to 1 yields
+Ik D ␄5Ik␃1 C
+1
+; k D 1; 2; : : : ; n:
+k
+(1.37)
+We see that Ik is a solution of the (linear, inhomogeneous, first-order) difference
+equation
+1
+(1.38)
+yk D ␄5yk␃1 C ; k D 1; 2; 3; : : : :
+k
+We now have what appears to be a practical scheme to compute In : start with
+y0 D I0 given by (1.36) and then apply in succession (1.38) for k D 1; 2; : : : ; n;
+then yn D In . Recursion (1.38), for any starting value y0 , defines a function,
+yn D fn .y0 /:
+(1.39)
+We have the black box in Fig. 1.5 and thus a problem fn W R ! R. (Here n
+is a parameter.) We are interested in the condition of fn at the point y0 D I0
+given by (1.36). Indeed, I0 in (1.36) is not machine representable and must be
+rounded to I0␄ before recursion (1.38) can be employed. Even if no further errors
+are introduced during the recursion, the final result will not be exactly In , but
+some approximation In␄ D fn .I0␄ /, and we have, at least approximately (actually
+exactly; see the remark after (1.46)),
+ˇ
+ˇ
+ˇ ␄
+ˇ ␄
+ˇ
+ˇ
+ˇ In ␄ In ˇ
+ˇ D .cond fn /.I0 /ˇ I0 ␄ I0 ˇ :
+ˇ
+ˇ
+ˇ
+ˇ I
+ˇ I
+n
+0
+(1.40)
+
+To compute the condition number, note that fn is a linear function of y0 .
+Indeed, if n D 1, then
+y1 D f1 .y0 / D ␄5y0 C 1:
+If n D 2, then
+y2 D f2 .y0 / D ␄5y1 C
+1
+1
+D .␄5/2 y0 ␄ 5 C ;
+2
+2
+and so on. In general,
+yn D fn .y0 / D .␄5/n y0 C pn ;
+where pn is some number (independent of y0 ). There follows
+ˇ ˇ
+ˇ
+ˇ
+ˇ y0 fn0 .y0 / ˇ ˇ y0 .␄5/n ˇ
+ˇ
+ˇ
+ˇ:
+ˇ
+.cond fn /.y0 / D ˇ
+ˇDˇ y
+ˇ
+yn
+n
+(1.41)
+Now, if y0 D I0 , then yn D In , and from the definition of In as an integral it is
+clear that In decreases monotonically in n (and indeed converges monotonically
+to zero as n ! 1). Therefore,
+.cond fn /.I0 / D
+I0 ␂ 5 n
+I0 ␂ 5 n
+>
+D 5n :
+In
+I0
+(1.42)
+We see that fn .y0 / is severely ill-conditioned at y0 D I0 , the more so the
+larger n.
+We could have anticipated this result by just looking at the recursion (1.38):
+we keep multiplying by (–5), which tends to make things bigger, whereas
+they should get smaller. Thus, there will be continuous cancellation occurring
+throughout the recursion.
+How can we avoid this ill-conditioning? The clue comes from the remark
+just made: instead of multiplying by a large number, we would prefer dividing
+by a large number, especially if the results get bigger at the same time. This is
+accomplished by reversing recurrence (1.38), that is, by choosing an ␅ > n and
+computing
+1
+yk␃1 D
+5
+␂
+␃
+1
+␄ yk ; k D ␅; ␅ ␄ 1; : : : ; n C 1:
+k
+(1.43)
+The problem then, of course, is how to compute the starting value y␅ . Before we
+deal with this, let us observe that we now have a new black box, as shown in
+Fig. 1.6.
+As before, the function involved, gn , is a linear function of y␅ , and an
+argument similar to the one leading to (1.41) then gives
+
+ˇ ␅ ␆␅␃n ˇ
+ˇ
+ˇy ␄1
+ˇ
+ˇ ␅
+5
+.cond gn /.y␅ / D ˇ
+ˇ; ␅ > n:
+ˇ
+ˇ
+yn
+(1.44)
+For y␅ D I␅ , we get, again by the monotonicity of In ,
+.cond gn /.I␅ / <
+␂ ␃␅␃n
+1
+; ␅ > n:
+5
+(1.45)
+In analogy to (1.40), we now have
+ˇ ␄
+ˇ
+ˇ ␂ ␃␅␃n ˇ ␄
+ˇ
+ˇ ␄
+ˇ In ␄ In ˇ
+ˇ
+ˇ I␅ ␄ I␅ ˇ
+ˇ
+ˇ
+ˇ D .cond gn /.I␅ /ˇ I␅ ␄ I␅ ˇ < 1
+ˇ
+ˇ;
+ˇ I
+ˇ
+ˇ
+ˇ I
+ˇ
+ˇ I
+5
+n
+␅
+(1.46)
+␅
+where I␅␄ is some approximation of I␅ . Actually, I␅␄ does not even have to be
+close to I␅ for (1.46) to hold, since the function gn is linear. Thus, we may take
+I␅␄ D 0, committing a 100% error in the starting value, yet obtaining In␄ with a
+relative error
+ˇ ␄
+ˇ ␂ ␃␅␃n
+ˇ In ␄ In ˇ
+ˇ
+ˇ< 1
+; ␅ > n:
+(1.47)
+ˇ I
+ˇ
+5
+n
+The bound on the right can be made arbitrarily small, say, ␇ ", if we choose ␅
+large enough, for example,
+ln 1
+(1.48)
+␅ ␃nC " :
+ln 5
+The final procedure, therefore, is: given the desired relative accuracy ", choose ␅
+to be the smallest integer satisfying (1.48) and then compute
+I␅␄ D 0;
+1
+␄
+D
+Ik␃1
+5
+␂
+␃
+1
+␄
+␄ Ik ; k D ␅; ␅ ␄ 1; : : : ; n C 1:
+k
+(1.49)
+This will produce a sufficiently accurate In␄ ␈ In , even in the presence of
+rounding errors committed in (1.49): they, too, will be consistently attenuated.
+Similar ideas can be applied to the more important problem of computing
+solutions to second-order linear recurrence relations such as those satisfied by
+Bessel functions and many other special functions of mathematical physics.
+
+The procedure of backward recurrence is then closely tied up with the theory
+of continued fractions.
+2. Algebraic equations: these are equations involving a polynomial of given
+degree n,
+p.x/ D 0; p.x/ D x n C an␃1 x n␃1 C ␂ ␂ ␂ C a1 x C a0 ;
+a0 ¤ 0:
+(1.50)
+Let ␈ be some fixed root of the equation, which we assume to be simple,
+p.␈/ D 0; p 0 .␈/ ¤ 0:
+(1.51)
+The problem then is to find ␈, given p. The data vector a D Œa0 ; a1 ; : : : ; an␃1 ␃T
+2 Rn consists of the coefficients of the polynomial p, and the result is ␈, a real
+or complex number. Thus, we have
+␃ W Rn ! C; ␈ D ␈.a0 ; a1 ; : : : ; an␃1 /:
+(1.52)
+What is the condition of ␃? We adopt the detailed approach of (1.27) and first
+define
+ˇ @␈ ˇ
+ˇ
+ˇ a␅
+ˇ @a␅ ˇ
+␇␅ D .cond␅ ␃/.a/ D ˇ
+(1.53)
+ˇ; ␅ D 0; 1; : : : ; n ␄ 1:
+ˇ ␈ ˇ
+Then we take a convenient norm, say, the L1 norm k␄k1 WD
+vector ␄ D Œ␇0 ; : : : ; ␇n␃1 ␃T , to define
+.cond ␃/.a/ D
+n␃1
+X
+Pn␃1
+␅D0 j␇␅ j of the
+.cond␅ ␃/.a/:
+(1.54)
+␅D0
+To determine the partial derivative of ␈ with respect to a␅ , observe that we have
+the identity
+Œ␈.a0 ; a1 ; : : : ; an /␃n C an␃1 Œ␈.␂ ␂ ␂ /␃n␃1 C ␂ ␂ ␂ C a␅ Œ␈.␂ ␂ ␂ /␃␅ C ␂ ␂ ␂ C a0
+0:
+Differentiating this with respect to a␅ , we get
+nŒ␈.a0 ; a1 ; : : : ; an /␃n␃1
+C a␅ ␅Œ␈.␂ ␂ ␂ /␃␅␃1
+@␈
+@␈
+C an␃1 .n ␄ 1/Œ␈.␂ ␂ ␂ /␃n␃2
+C␂␂␂
+@a␅
+@a␅
+@␈
+@␈
+C ␂ ␂ ␂ C a1
+C Œ␈.␂ ␂ ␂ /␃␅
+@a␅
+@a␅
+0;
+where the last term comes from differentiating the first factor in the product a␅ ␈ ␅ .
+The last identity can be written as
+
+21
+p 0 .␈/
+@␈
+C ␈ ␅ D 0:
+@a␅
+Since p 0 .␈/ ¤ 0, we can solve for @␈=@a␅ and insert the result in (1.53) and
+(1.54) to obtain
+n␃1
+X
+1
+.cond ␃/.a/ D
+ja␅ j j␈j␅ :
+(1.55)
+j␈p 0 .␈/j ␅D0
+We illustrate (1.55) by considering the polynomial p of degree n that has the
+zeros 1; 2; : : : ; n,
+p.x/ D
+n
+Y
+.x ␄ ␅/ D x n C an␃1 x n␃1 C ␂ ␂ ␂ C a0 :
+(1.56)
+␅D1
+This is a famous example due to J. H. Wilkinson, who discovered the ill-
+conditioning of some of the zeros almost by accident. If we let ␈␆ D ␆,
+␆ D 1; 2; : : : ; n, it can be shown that
+n2 as n ! 1;
+min cond ␈␆ D cond ␈1
+␆
+max cond ␈␆
+␆
+1
+␇
+p ␈
+2␄ 2 n
+!n
+p
+2C1
+p
+as n ! 1:
+2␄1
+p
+The worst-conditioned root is ␈␆0 with ␆0 the integer closest to n= 2, when n is
+large. Its condition number grows like .5:828 : : : /n , thus exponentially fast in n.
+For example, when n D 20, then cond ␈␆0 D 0:540 ␅ 1014 .
+The example teaches us that the roots of an algebraic equation written in the
+form (1.50) can be extremely sensitive to small changes in the coefficients a␅ . It
+would, therefore, be ill-advised to express every polynomial in terms of powers,
+as in (1.56) and (1.50). This is particularly true for characteristic polynomials of
+matrices. It is much better here to work with the matrices themselves and try to
+reduce them (by similarity transformations) to a form that allows the eigenvalues
+– the roots of the characteristic equation – to be read off relatively easily.
+3. Systems of linear algebraic equations: given a nonsingular square matrix A 2
+Rn␆n , and a vector b 2 Rn , the problem now discussed is solving the system
+Ax D b:
+(1.57)
+Here the data are the elements of A and b, and the result the vector x. The map in
+2
+question is thus Rn Cn ! Rn . To simplify matters, let us assume that A is a fixed
+matrix not subject to change, and only the vector b is undergoing perturbations.
+We then have a map f W Rn ! Rn given by
+x D f .b/ WD A ␃1 b
+
+It is in fact a linear map. Therefore, @f =@b D A ␃1 , and we get, using (1.35),
+.cond f /.b/ D
+kbk kA ␃1 k
+;
+kA ␃1 bk
+(1.58)
+where we may take any vector norm in Rn and associated matrix norm
+(cf. (1.30)). We can write (1.58) alternatively in the form
+.cond f /.b/ D
+kAxk kA ␃1 k
+kxk
+.where Ax D b/;
+and since there is a one-to-one correspondence between x and b, we find for the
+worst condition number
+kAxk
+␂ kA ␃1 k D kAk ␂ kA ␃1 k ;
+x 2R
+kxk
+x ¤0
+maxn .cond f /.b/ D maxn
+b2R
+b¤0
+by definition of the norm of A. The number on the far right no longer depends on
+the particular system (i.e., on b) and is called the condition number of the matrix
+A. We denote it by
+cond A WD kAk ␂ kA ␃1 k :
+(1.59)
+It should be clearly understood, though, that it measures the condition of a linear
+system with coefficient matrix A, and not the condition of other quantities that
+may depend on A, such as eigenvalues.
+Although we have considered only perturbations in the right-hand vector b, it
+turns out that the condition number in (1.59) is also relevant when perturbations
+in the matrix A are allowed, provided they are sufficiently small (so small, for
+example, that k␂Ak ␂ kA ␃1 k < 1).
+We illustrate (1.59) by several examples.
+(a) Hilbert2 matrix:
+2
+David Hilbert (1862–1943) was the most prominent member of the Göttingen school of mathe-
+matics. Hilbert’s fundamental contributions to almost all parts of mathematics – algebra, number
+theory, geometry, integral equations, calculus of variations, and foundations – and in particular the
+23 now famous problems he proposed in 1900 at the International Congress of Mathematicians
+in Paris gave a new impetus, and new directions, to 20th-century mathematics. Hilbert is also
+known for his work in mathematical physics, where among other things he formulated a variationl
+principle for Einstein’s equations in the theory of relativity.
+
+on of a Problem
+23
+2
+1
+2
+1
+3
+6 1
+6
+6
+6 1
+6
+6
+Hn D 6 2
+6
+6 ␂␂␂
+␂␂␂
+6
+6
+4 1
+1
+n nC1
+␂␂␂
+␂␂␂
+1
+n
+1
+nC1
+␂␂␂␂␂␂
+␂␂␂1
+2n ␄ 1
+3
+7
+7
+7
+7
+7
+7
+7 2 Rn␆n :
+7
+7
+7
+7
+5
+(1.60)
+This is clearly a symmetric matrix, and it is also positive definite. Some
+numerical values for the condition number of H n , computed with the
+Euclidean norm,3 are shown in Table 1.1. Their rapid growth is devastating.
+Table 1.1 The condition of
+Hilbert matrices
+n
+10
+20
+40
+cond2 H n
+1:60 ␆ 1013
+2:45 ␆ 1028
+7:65 ␆ 1058
+A system of order n D 10, for example, cannot be solved with any reliability
+in single precision on a 14-decimal computer. Double precision will be
+“exhausted” by the time we reach n D 20. The Hilbert matrix thus is a
+prototype of an ill-conditioned matrix. From a result of G. Szegő it can be
+seen that
+␈4nC4
+␇p
+2C1
+cond2 H n
+p
+as n ! 1:
+215=4
+n
+(b) Vandermonde4 matrices: these are matrices of the form
+We have cond2 H n D max .H n / ␅ max .H ␄1
+n /, where max .A/ denotes the largest eigenvalue of
+the (symmetric, positive definite) matrix A. The eigenvalues of H n and H ␄1
+n are easily computed
+by the Matlab routine eig, provided that the inverse of H n is computed directly from well-known
+formulae (not by inversion); see MA 9.
+4
+Alexandre Théophile Vandermonde (1735–1796), a musician by training, but through acquain-
+tance with Fontaine turned mathematician (temporarily), and even elected to the French Academy
+of Sciences, produced a total of four mathematical papers within 3 years (1770–1772). Though
+written by a novice to mathematics, they are not without interest. The first, e.g., made notable
+contributions to the then emerging theory of equations. By virtue of his fourth paper, he is
+regarded as the founder of the theory of determinants. What today is referred to as “Vandermonde
+determinant,” however, does not appear anywhere in his writings. As a member of the Academy,
+he sat in a committee (together with Lagrange, among others) that was to define the unit of length –
+the meter. Later in his life, he became an ardent supporter of the French revolution.
+
+Vn D6
+6
+6
+4
+1
+tn
+␂
+␂
+␂
+3
+7
+7
+7
+7
+7 2 Rn␆n ;
+7
+7
+5
+(1.61)
+where t1 , t2 ; : : : ; tn are parameters, here assumed real. The condition number
+of these matrices, in the 1-norm, has been studied at length. Here are some
+sample results: if the parameters are equally spaced in [–1,1], that is,
+t␅ D 1 ␄
+2.␅ ␄ 1/
+; ␅ D 1; 2; : : : ; n;
+n␄1
+then
+1 ␃ =4 n. C 1 ln 2/
+e
+e 4 2
+; n ! 1:
+cond1 V n
+Numerical values are shown in Table 1.2. They are not growing quite as
+fast as those for the Hilbert matrix, but still exponentially fast. Worse than
+exponential growth is observed if one takes harmonic numbers as parameters,
+Table 1.2 The condition of
+Vandermonde matrices
+n
+cond1 V n
+1:36 ␆ 104
+1:05 ␆ 109
+6:93 ␆ 1018
+3:15 ␆ 1038
+10
+20
+40
+80
+t␅ D
+1
+; ␅ D 1; 2; : : : ; n:
+␅
+Then indeed
+cond1 V n > nnC1 :
+Fortunately, there are not many matrices occurring naturally in applications
+that are that ill-conditioned, but moderately to severely ill-conditioned
+matrices are no rarity in real-life applications.
+1.4 The Condition of an Algorithm
+We again assume that we are dealing with a problem f given by
+f W Rm ! Rn ; y D f .x/:
+(1.62)
+
+Along with the problem f , we are also given an algorithm A that “solves” the
+problem. That is, given a machine vector x 2 Rm .t; s/, the algorithm A produces
+a vector yA (in machine arithmetic) that is supposed to approximate y D f .x/.
+Thus, we have another map fA describing how the problem f is solved by the
+algorithm A,
+fA W Rm .t; s/ ! Rn .t; s/; yA D fA .x/:
+(1.63)
+In order to be able to analyze fA in these general terms, we must make a basic
+assumption, namely, that
+for every x 2 Rm .t; s/; there holds
+(1.64)
+fA .x/ D f .xA / for some xA 2 R :
+m
+That is, the computed solution corresponding to some input x is the exact solution
+for some different input xA (not necessarily a machine vector and not necessarily
+uniquely determined) that we hope is close to x. The closer we can find an xA to
+x, the more confidence we should place in the algorithm A. We therefore define
+the condition of A in terms of the xA closest to x (if there is more than one), by
+comparing its relative error with the machine precision eps:
+.cond A/.x/ D inf
+xA
+kxA ␄ xk
+=eps:
+kxk
+(1.65)
+Here the infimum is over all xA satisfying yA D f .xA /. In practice, one can take
+any such xA and then obtain an upper bound for the condition number:
+.cond A/.x/ ␇
+kxA ␄ xk
+=eps:
+kxk
+(1.66)
+The vector norm in (1.65), respectively, (1.66), can be chosen as seems convenient.
+Here are some very elementary examples.
+1. Suppose a library routine for the logarithm function y D ln x, for any positive
+machine number x, produces a yA satisfying yA D Œln x␃.1 C "/, j"j ␇ 5 eps.
+What can we say about the condition of the underlying algorithm A? We clearly
+have
+yA D ln xA ; where xA D x 1C" .uniquely/:
+Consequently,
+ˇ x ␄ x ˇ ˇˇ x 1C" ␄ x ˇˇ
+ˇ
+ˇ
+ˇ A
+ˇ ˇ
+ˇ D jx " ␄ 1j D ˇe" ln x ␄ 1ˇ ␈ j" ln xj ␇ 5 jln xj ␂ eps;
+ˇ
+ˇDˇ
+ˇ
+x
+x
+
+and, therefore, .cond A/.x/ ␇ 5 jln xj. The algorithm A is well conditioned,
+except in the immediate right-hand vicinity of x D 0 and for x very large. (In
+the latter case, however, x is likely to overflow before A becomes seriously ill-
+conditioned.)
+2. Consider the problem
+f W Rn ! R; y D x1 x2 ␂ ␂ ␂ xn :
+We solve the problem by the obvious algorithm
+p1 D x1 ;
+AW
+pk D fl.xk pk␃1 /; k D 2; 3; : : : ; n;
+yA D pn :
+Note that x1 is machine representable, since for the algorithm A we assume x 2
+Rn .t; s/.
+Now using the basic law of machine arithmetic (cf. (1.15)), we get
+p1 D x1 ;
+pk D xk pk␃1 .1 C "k /; k D 2; 3; : : : ; n; j"k j ␇ eps;
+from which
+pn D x1 x2 ␂ ␂ ␂ xn .1 C "2 /.1 C "3 / ␂ ␂ ␂ .1 C "n /:
+Therefore, we can take for example (there is no uniqueness),
+xA D Œx1 ; x2 .1 C "2 /; : : : ; xn .1 C "n /␃T :
+This gives, using the 1-norm,
+kŒ0; x2 "2 ; : : : ; xn "n ␃T k1
+kxk1 eps
+kxA ␄ xk1
+D
+␇
+D 1;
+kxk1 eps
+kxk1 eps
+kxk1 eps
+and so, by (1.66), .cond A/.x/ ␇ 1 for any x 2 Rn .t; s/. Our algorithm, to nobody’s
+surprise, is perfectly well conditioned.
+
+1.5 Computer Solution of a Problem; Overall Error
+The problem to be solved is again
+f W Rm ! Rn ; y D f .x/:
+(1.67)
+This is the mathematical (idealized) problem, where the data are exact real numbers,
+and the solution is the mathematically exact solution.
+When solving such a problem on a computer, in floating-point arithmetic with
+precision eps, and using some algorithm A, one first of all rounds the data, and then
+applies to these rounded data not f , but fA :
+x␄ D rounded data;
+kx␄ ␄ xk
+D ";
+kxk
+(1.68)
+yA␄ D fA .x␄ /:
+Here " represents the rounding error in the data. (The error " could also be due to
+sources other than rounding, e.g., measurement.) The total error that we wish to
+estimate is then
+kyA␄ ␄ yk
+:
+(1.69)
+kyk
+By the basic assumption (1.64) made on the algorithm A, and choosing xA␄
+optimally, we have
+fA .x␄ / D f .xA␄ /;
+kxA␄ ␄ x␄ k
+D .cond A/.x␄ / ␂ eps:
+kx␄ k
+(1.70)
+Let y ␄ D f .x␄ /. Then, using the triangle inequality, we have
+ky␄ ␄ y␄ k
+ky␄ ␄ y␄ k
+kyA␄ ␄ yk
+ky␄ ␄ yk
+ky␄ ␄ yk
+␇ A
+C
+␈ A ␄
+C
+;
+kyk
+kyk
+kyk
+ky k
+kyk
+where we have used the (harmless) approximation kyk ␈ ky␄ k. By virtue of (1.70),
+we now have for the first term on the right,
+kfA .x␄ / ␄ f .x␄ /k
+kf .xA␄ / ␄ f .x␄ /k
+kyA␄ ␄ y␄ k
+D
+D
+ky␄ k
+kf .x␄ /k
+kf .x␄ /k
+␇ .cond f /.x␄ / ␂
+kxA␄ ␄ x␄ k
+kx␄ k
+D .cond f /.x␄ / ␂ .cond A/.x␄ / ␂ eps:
+
+For the second term we have
+kf .x␄ / ␄ f .x/k
+kx␄ ␄ xk
+ky␄ ␄ yk
+D
+␇ .cond f /.x/ ␂
+D .cond f /.x/ ␂ ":
+kyk
+kf .x/k
+kxk
+Assuming finally that .cond f /.x␄ / ␈ .cond f /.x/, we get
+kyA␄ ␄ yk
+␇ .cond f /.x/f" C .cond A/.x␄ / ␂ epsg:
+kyk
+(1.71)
+This shows how the data error and machine precision contribute toward the total
+error: both are amplified by the condition of the problem, but the latter is further
+amplified by the condition of the algorithm.
+1.6 Notes to Chapter 1
+In addition to rounding errors in the data and those committed during the execution
+of arithmetic operations, there may be other sources of errors not considered in this
+introductory chapter. One such source of error, which is not entirely dismissible, is
+a faulty design of the computer chip that executes arithmetic operations. This was
+brought home in an incident several years ago, when it was discovered (by Thomas
+Nicely in the course of number-theoretic computations involving reciprocals of
+twin primes) that the Pentium floating-point divide chip manufactured by Intel can
+produce erroneous results for certain (extremely rare) bit patterns in the divisor. The
+incident – rightly so – has stirred up considerable concern and prompted not only
+remedial actions but also careful analysis of the phenomenon; some relevant articles
+are those by Coe et al. [1995] and Edelman [1997].
+Neither should the occurrence of overflow and proper handling thereof be taken
+lightly, especially not in real-time applications. Again, a case in point is the failure of
+the French rocket Ariane 5, which on June 4, 1996, less than a minute into its flight,
+self-destructed. The failure was eventually traced to an overflow in a floating-point
+to integer conversion and lack of protection against this occurrence in the rocket’s
+on-board software (cf. Anonymous [1996]).
+Many of the topics covered in this chapter, but also the effect of finite precision
+computation on convergence and stability of mathematical processes, and issues of
+error analyses are dealt with in Chaitin-Chatelin and Frayssé [1996].
+Section 1.1.1. The abstract notion of the real number system is discussed in most
+texts on real analysis, for example, Hewitt and Stromberg [1975, Chap. 1, Sect. 1.5]
+or Rudin [1976, Chap. 1]. The development of the concept of real (and complex)
+numbers has had a long and lively history, extending from pre-Hellenic times to the
+recent past. Many of the leading thinkers over time contributed to this development.
+A reader interested in a detailed historical account (and who knows German) is
+referred to the monograph by Gericke [1970].
+
+Section 1.1.2.1. The notion of the floating-point number system and associated
+arithmetic, including interval arithmetic, can also be phrased in abstract algebraic
+terms; see, for example, Kulisch and Miranker [1981]. For a comprehensive treat-
+ment of computer arithmetic, including questions of validation, see Kulisch [2008].
+A more elementary, but detailed, discussion of floating-point numbers and arith-
+metic is given in Sterbenz [1974]. There the reader will learn, for example, that
+computing the average of two floating-point numbers, or solving a quadratic
+equation, can be fairly intricate tasks if they are to be made foolproof. The
+quadratic equation problem is also considered at some length in Young and
+Gregory [1988, Sect. 3.4], where further references are given to earlier work of
+W. Kahan and G. E. Forsythe.
+The basic standard for binary floating-point arithmetic, used on all contemporary
+computers, is the ANSI/IEEE Standard 754 established in IEEE [1985]. It provides
+for t D 23 bits in the mantissa and s D 7 bits in the exponent, in single-
+precision arithmetic, and has t D 52, s D 11 in double precision. There is also
+an “extended precision” for which t D 63, s D 14, allowing for a number range
+of approx. 10␃4964 to 10C4964 . A good source for IEEE floating-point arithmetic is
+Overton [2001].
+Section 1.1.2.3. Rational arithmetic is available in all major symbolic computation
+packages such as Mathematica and Macsyma.
+Interval arithmetic has evolved to become an important tool in computations that
+strive at obtaining guaranteed and sharp inclusion regions for the results of mathe-
+matical problems. Basic texts on (real) interval analysis are Moore [1966], [1979],
+Alefeld and Herzberger [1983], and Moore et al. [2009], whereas complex interval
+arithmetic is treated in Petković and Petković [1998]. For the newly evolving field
+of validated numerics we refer to Tucker [2011]. Specific applications such as
+computing inclusions of the range of functions, of global extrema of functions
+of one and several variables, and of solutions to systems of linear and nonlinear
+equations are studied, respectively, in Ratschek and Rokne [1984], [1988], Hansen
+and Walster [2004], and Neumaier [1990]. Other applications, e.g., to parameter
+estimation, robust control, and robotics can be found in Jaulin et al. [2001].
+Concrete algorithms and codes (in Pascal and CCC ) for “verified computing” are
+contained in Hammer et al. [1993], [1995]. Interval arithmetic has been most widely
+used in processes involving finite-dimensional spaces; for applications to infinite-
+dimensional problems, notably differential equations, see, however, Eijgenraam
+[1981] and Kaucher and Miranker [1984]. For a recent expository account, see also
+Rump [2010].
+Section 1.2. For floating-point arithmetic, see the handbook by Muller et al. [2010].
+The fact that thoughtless use of mathematical formulae and numerical methods, or
+inherent sensitivities in a problem, can lead to disastrous results has been known
+since the early days of computers; see, for example, the old but still relevant
+
+papers by Stegun and Abramowitz [1956] and Forsythe [1970]. Nearby singularities
+can also cause the accuracy to deteriorate unless corrective measures are taken;
+Forsythe [1958] has an interesting discussion of this.
+Section 1.2.1. For the implications of rounding in the problem of apportion-
+ment, mentioned in footnote 1, a good reference is Garfunkel and Steen,
+eds. [1988, Chap. 12, pp.230–249].
+Section 1.3.1. An early but basic reference for ideas of conditioning and error anal-
+ysis in algebraic processes is Wilkinson [1994]. An impressive continuation of this
+work, containing copious references to the literature, is Higham [2002]. It analyzes
+the behavior in floating-point arithmetic of virtually all the algebraic processes
+in current use. Problems of conditioning specifically involving polynomials are
+discussed in Gautschi [1984]. The condition of general (differentiable) maps has
+been studied as early as 1966 in Rice [1966].
+Section 1.3.2. 1. For a treatment of stability aspects of more general difference
+equations, and systems thereof, including nonlinear ones, the reader is referred to
+the monograph by Wimp [1984]. This also contains many applications to special
+functions. Other relevant texts are Lakshmikantham and Trigiante [2002] and
+Elaydi [2005].
+2. The condition of algebraic equations, although considered already in 1963 by
+Wilkinson, has been further analyzed by Gautschi [1973]. The circumstances
+that led to Wilkinson’s example (1.56), which he himself describes as “the
+most traumatic experience in [his] career as a numerical analyst,” are related
+in the essay Wilkinson [1984, Sect. 2]. This reference also deals with errors
+committed in the evaluation and deflation of polynomials. For the latter, also
+see Cohen [1994]. The asymptotic estimates for the best- and worst-conditioned
+roots in Wilkinson’s example are from Gautschi [1973]. For the computation
+of eigenvalues of matrices, the classic treatment is Wilkinson [1988]; more
+recent accounts are Parlett [1998] for symmetric matrices and Golub and Van
+Loan [1996, Chap. 7–9] for general matrices.
+3. A more complete analysis of the condition of linear systems that also allows for
+perturbations of the matrix can be found, for example, in the very readable books
+by Forsythe and Moler [1967, Chap. 8] and Stewart [1973, Chap. 4, Sect. 3]. The
+asymptotic result of Szegő cited in connection with the Euclidean condition
+number of the Hilbert matrix is taken from Szegő [1936]. For the explicit inverse
+of the Hilbert matrix, referred to in footnote 3, see Todd [1954]. The condition
+of Vandermonde and Vandermonde-like matrices has been studied in a series of
+papers by the author; for a summary, see Gautschi [1990], and Gautschi [2011b]
+for optimally scaled and optimally conditioned Vandermonde and Vandermonde-
+like matrices.
+Sections 1.4 and 1.5. The treatment of the condition of algorithms and of the overall
+error in computer solutions of problems, as given in these sections, seems to be more
+or less original. Similar ideas, however, can be found in the book by Dahlquist and
+Björck [2008, Sect. 2.4].
+
+Exercises and Machine Assignments to Chapter 1
+Exercises
+1. Represent all elements of RC .3; 2/ D fx 2 R.3; 2/ W x > 0; x normalizedg as
+dots on the real axis. For clarity, draw two axes, one from 0 to 8, the other from
+0 to 12 .
+2. (a) What is the distance d.x/ of a positive normalized floating-point number
+x 2 R.t; s/ to its next larger floating-point number:
+d.x/ D min .y ␄ x/ ‹
+y2R.t;s/
+y>x
+(b) Determine the relative distance r.x/ D d.x/=x, with x as in (a), and give
+upper and lower bounds for it.
+3. The identity fl.1 C x/ D 1, x ␃ 0, is true for x D 0 and for x sufficiently small.
+What is the largest machine number x for which the identity still holds?
+4. Consider a miniature binary computer whose floating-point words consist of
+four binary digits for the mantissa and three binary digits for the exponent (plus
+sign bits). Let
+x D .0:1011/2 ␅ 20 ;
+y D .0:1100/2 ␅ 20 :
+Mark in the following table whether the machine operation indicated (with
+the result z assumed normalized) is exact, rounded (i.e., subject to a nonzero
+rounding error), overflows, or underflows.
+Operation
+Exact
+Rounded
+Overflow
+Underflow
+z D fl.x ␄ y/
+z D fl..y ␄ x/10 /
+z D fl.x C y/
+z D fl.y C .x=4//
+z D fl.x C .y=4//
+5. The Matlab “machine precision” eps is twice the unit roundoff (2 ␅ 2␃t ,
+t D 53; cf. Sect. 1.1.3). It can be computed by the following Matlab program
+(attributed to CLEVE MOLER):
+
+%EI_5 Matlab machine precision
+%
+a=4/3;
+b=a-1;
+c=b+b+b;
+eps0=abs(c-1)
+Run the program and prove its validity.
+6. Prove (1.12).
+7. A set S of real numbers is said to possess a metric if there is defined a
+distance function d.x; y/ for any two elements x; y 2 S that has the following
+properties:
+(i) d.x; y/ ␃ 0 and d.x; y/ D 0 if and only if x D y (positive definiteness);
+(ii) d.x; y/ D d.y; x/ (symmetry);
+(iii) d.x; y/ ␇ d.x; z/ C d.z; y/ (triangle inequality).
+Discuss which of the following error measures is, or is not, a distance function
+on what set S of real numbers:
+(a) absolute error: ae.x; y/ Dˇ jx ␄ˇ yj;
+ˇ;
+(b) relative error: re.x; y/ D ˇ x␃y
+x
+(c) relative precision (F.W.J. Olver, 1978): rp.x; y/ D j ln jxj ␄ ln jyj j.
+If y D x.1 C "/, show that rp.x; y/ D O."/ as " ! 0.
+8. Assume that x1␄ , x2␄ are approximations to x1 , x2 with relative errors E1 and
+E2 , respectively, and that jEi j ␇ E, i D 1; 2. Assume further that x1 ¤ x2 .
+(a) How small must E (in dependence of x1 and x2 ) be to ensure
+that x1␄ ¤ x2␄ ?
+1
+1
+(b) Taking x ␂ ␃x
+␂ to approximate x ␃x , obtain a bound on the relative error
+1
+2
+1
+2
+committed, assuming (1) exact arithmetic; (2) machine arithmetic with
+machine precision eps. (In both cases, neglect higher-order terms in E1 ,
+E2 , eps.)
+9. Consider the quadratic equation x 2 C px C q D 0 with roots x1 , x2 . As seen in
+the second Example of Sect. 1.2.2, the absolutely larger root must be computed
+first, whereupon the other can be accurately obtained from x1 x2 D q. Suppose
+one incorporates this idea in a program such as
+x1=abs(p/2)+sqrt(p*p/4-q);
+if p>0, x1=-x1; end
+x2=q/x1;
+Find two serious flaws with this program as a “general-purpose quadratic
+equation solver.” Take into consideration that the program will be executed in
+floating-point machine arithmetic. Be specific and support your arguments by
+examples, if necessary.
+
+10. Suppose, for jxj small, one has an accurate value of y D ex ␄ 1 (obtained, e.g.,
+by Taylor expansion). Use this value to compute accurately sinh x D 12 .ex ␄
+e␃x / for small
+pjxj.
+11. Let f .x/ D 1 C x 2 ␄ 1.
+(a) Explain the difficulty of computing f .x/ for a small value of jxj and show
+how it can be circumvented.
+(b) Compute .cond f /.x/ and discuss the conditioning of f .x/ for small jxj.
+(c) How can the answers to (a) and (b) be reconciled?
+12. The nth power of some positive (machine) number x can be computed
+(i) either by repeated multiplication by x, or
+(ii) as x n D en ln x .
+In each case, derive bounds for the relative error due to machine arithmetic,
+neglecting higher powers of the machine precision against the first power.
+(Assume that exponentiation and taking logarithms both involve a relative error
+" with j"j ␇ eps.) Based on these bounds, state a criterion (involving x and n)
+for (i) to be more accurate than (ii).
+13. Let f .x/ D .1 ␄ cos x/=x, x ¤ 0.
+(a) Show that direct evaluation of f is inaccurate if jxj is small; assume
+fl.f .x// D fl..1 ␄ fl.cos x//=x/, where fl.cos x/ D .1 C "c / cos x, and
+estimate the relative error "f of fl.f .x// as x ! 0.
+(b) A mathematically equivalent form of f is f .x/ D sin2 x=.x.1 C cos x//.
+Carry out a similar analysis as in (a), based on fl.f .x// D fl.Œfl.sin x/␃2 =
+fl.x.1 C fl.cos x////, assuming fl.cos x/ D .1 C "c / cos x, fl.sin x/ D
+.1 C "s / sin x and retaining only first-order terms in "s and "c . Discuss
+the result.
+(c) Determine the condition of f .x/. Indicate for what values of x (if any)
+f .x/ is ill-conditioned. (jxj is no longer small, necessarily.)
+␆1=2
+␆1=2
+␅
+␅
+p
+C i r␃x
+, where r D .x 2 C y 2 /1=2 .
+14. If z D x C iy, then z D rCx
+2
+2
+␅ rCx ␆1=2
+p
+Alternatively, z D u C iv, u D
+, v D y=2u. Discuss the
+2
+computational merits of these two (mathematically equivalent) expressions.
+Illustrate with z D 4:5 C 0:025i, using eight significant decimal places. fHint:
+you may assume x > 0 without restriction of generality. Why?g
+15. Consider the numerical evaluation of
+f .t/ D
+1
+X
+nD0
+1
+1 C n4 .t ␄ n/2 .t ␄ n ␄ 1/2
+;
+say, for t D 20, and 7-digit accuracy. Discuss the danger involved.
+16. Let XC be the largest positive machine representable number, and X␃ the
+absolute value of the smallest negative one (so that ␄X␃ ␇ x ␇ XC for any
+machine number x). Determine, approximately, all intervals on R on which the
+tangent function overflows.
+
+17. (a) Use Matlab to determine the first value of the integer n for which nŠ
+overflows. fHint: use Stirling’s formula for nŠ.g
+(b) Do the same as (a), but for x n , x D 10; 20; : : : ; 100.
+(c) Discuss how x n e ␃x =nŠ can be computed for large x and n without
+unnecessarily incurring overflow. fHint: use logarithms and an asymptotic
+formula for ln nŠ.g
+18. Consider a decimal computer with three (decimal) digits in the floating-point
+mantissa.
+(a) Estimate the relative error committed in symmetric rounding.
+(b) Let x1 D 0:982, x2 D 0:984 be two machine numbers. Calculate in
+machine arithmetic the mean m D 12 .x1 C x2 /. Is the computed number
+between x1 and x2 ?
+(c) Derive sufficient conditions for x1 < fl.m/ < x2 to hold, where x1 , x2 are
+two machine numbers with 0 < x1 < x2 .
+19. For this problem, assume a binary computer with 12 bits in the floating-point
+mantissa.
+(a) What is the machine precision eps?
+(b) Let x D 6=7 and x ␄ be the correctly rounded machine approximation to x
+(symmetric rounding). Exhibit x and x ␄ as binary numbers.
+(c) Determine (exactly) the relative error " of x ␄ as an approximation to x, and
+calculate the ratio j"j=eps.
+20. The distributive law of algebra states that
+.a C b/c D ac C bc:
+Discuss to what extent this is violated in machine arithmetic. Assume a
+computer with machine precision eps and assume that a, b, c are machine-
+representable numbers.
+(a) Let y1 be the floating-point number obtained by evaluating .a C b/c (as
+written) in floating-point arithmetic, and let y1 D .aCb/c.1Ce1 /. Estimate
+je1 j in terms of eps (neglecting second-order terms in eps).
+(b) Let y2 be the floating-point number obtained by evaluating ac C bc (as
+written) in floating-point arithmetic, and let y2 D .aCb/c.1Ce2 /. Estimate
+je2 j (neglecting second-order terms in eps) in terms of eps (and a, b, and
+c).
+(c) Identify conditions (if any) under which one of the two yi is significantly
+less accurate than the other.
+21. Let x1 , x2 ; : : : ; xn , n > 1, be machine numbers. Their product can be computed
+by the algorithm
+p1 D x1 ;
+pk D fl.xk pk␃1 /;
+k D 2; 3; : : : ; n:
+
+(a) Find an upper bound for the relative error .pn ␄ x1 x2 ␂ ␂ ␂ xn /=
+.x1 x2 ␂ ␂ ␂ xn / in terms of the machine precision eps and n.
+1
+(b) For any integer r ␃ 1 not too large so as to satisfy r ␂ eps < 10
+, show that
+.1 C eps/r ␄ 1 < 1:06 ␂ r ␂ eps:
+Hence, for n not too large, simplify the answer given in (a). fHint: use the
+binomial theorem.g
+22. Analyze the error propagation in exponentiation, x ˛ .x > 0/:
+(a) assuming x exact and ˛ subject to a small relative error "˛ ;
+(b) assuming ˛ exact and x subject to a small relative error "x .
+Discuss the possibility of any serious loss of accuracy.
+23. Indicate how you would accurately compute
+.x C y/1=4 ␄ y 1=4 ;
+x > 0;
+y > 0:
+24. (a) Let a D 0:23371258 ␅ 10␃4 , b D 0:33678429 ␅ 102 , c D ␄0:33677811 ␅
+102 . Assuming an 8-decimal-digit computer, determine the sum s D a C
+b Cc either as (1) fl.s/ D fl.fl.a Cb/Cc/ or as (2) fl.s/ D fl.a Cfl.b Cc/).
+Explain the discrepancy between the two answers.
+(b) For arbitrary machine numbers a, b, c on a computer with machine
+precision eps, find a criterion on a, b, c for the result of (2) in (a) to be
+more accurate than the result of (1). fHint: compare bounds on the relative
+errors, neglecting higher-order terms in eps and assuming a C b C c ¤ 0;
+see also MA 7.g
+25. Write the expression a2 ␄ 2ab cos ␇ C b 2 (a > 0; b > 0) as the sum of two
+positive terms to avoid cancellation errors. Illustrate the advantage gained in
+the case a D 16:5, b D 15:7, ␇ D 5ı , using 3-decimal-digit arithmetic. Is the
+method foolproof?
+26. Determine the condition number for the following functions:
+(a) f .x/ D ln x; x > 0;
+(b) f .x/ D cos x; jxj < 12 ;
+(c) f .x/ D sin␃1 x; jxj < 1;
+x
+(d) f .x/ D sin␃1 p
+.
+1 C x2
+Indicate the possibility of ill-conditioning.
+27. Compute the condition number of the following functions, and discuss any
+possible ill-conditioning:
+(a) f .x/ D x 1=n p .x > 0; n > 0 an integer);
+(b) f .x/ D x ␄ qx 2 ␄ 1 .x > 1/;
+(c) f .x1 ; x2 / D x12 C x22 ;
+(d) f .x1 ; x2 / D x1 C x2 .
+
+28. (a) Consider the composite function h.t/ D g.f .t//. Express the condition of
+h in terms of the condition of g and f . Be careful to state at which points
+the various condition numbers are to be evaluated.
+t
+(b) Illustrate (a) with h.t/ D 1Csin
+; t D 14 .
+1␃sin t
+29. Show that .cond f ␂ g/.x/ ␇ .cond f /.x/ C .cond g/.x/. What can be said
+about .cond f =g/.x/?
+30. Let f W R2 ! R be given by y D x1 C x2 . Define (cond f )(x) =
+(cond11 f )(x)+ (cond12 f )(x), where x D Œx1 ; x2 ␃T (cf. (1.27)).
+(a) Derive a formula for .x1 ; x2 / D .cond f /.x/.
+(b) Show that .x1 ; x2 / as a function of x1 ; x2 is symmetric with respect to
+both bisectors b1 and b2 (see figure).
+x2
+b1
+x1
+b2
+(c) Determine the lines in R2 on which .x1 ; x2 / D c, c ␃ 1 a constant.
+(Simplify the analysis by using symmetry; cf. part (b).)
+31. Let k ␂ k be a vector norm in Rn and denote by the same symbol the associated
+matrix norm. Show for arbitrary matrices A, B 2 Rn␆n that
+(a) kABk ␇ kAk kBk ;
+(b) cond.AB/ ␇ cond A ␂ cond B.
+P
+32. Prove (1.32). fHint: let m1 D max␅ ␆ ja␅␆ j. Show that kAk1 ␇ m1 as
+well as kAk1 ␃ m1 , the latter by taking a special vector x in (1.30).g
+P
+33. Let the L1 norm of a vector y D Œy ␃ be defined by kyk1 D
+jy j. For a
+matrix A 2 Rn␆m , show that
+kAk1 WD max
+m
+x 2R
+x ¤0
+X
+kAxk1
+D max
+ja␅␆ j;
+␆
+kxk1
+␅
+P
+that is, kAk1 is the “maximum column sum.” fHint: let m1 D max␆ ␅ ja␅␆ j.
+Show that kAk1 ␇ m1 as well as kAk1 ␃ m1 , the latter by taking for x in
+(1.30) an appropriate coordinate vector.g
+34. Let a, q be linearly independent vectors in Rn of (Euclidean) length 1. Define
+b. / 2 Rn as follows:
+b. / D a ␄ q; 2 R:
+
+Compute the condition number of the angle ˛. / between b. / and q at the
+value D 0 D q T a. (Then b. 0 / ? q; see figure.) Discuss the answer.
+b ( ρ0 )
+a
+q
+35. The area ␂ of a triangle ABC is given by ␂ D 12 ab sin ␇ (see figure). Discuss
+the numerical condition of ␂.
+γ
+36. Define, for x ¤ 0,
+fn D fn .x/ D .␄1/n
+dn
+dx n
+␂ ␃x ␃
+e
+; n D 0; 1; 2; : : : :
+x
+(a) Show that ffn g satisfies the recursion
+yk D
+k
+e␃x
+e␃x
+yk␃1 C
+; k D 1; 2; 3; : : : I y0 D
+:
+x
+x
+x
+fHint: differentiate k times the identity e␃x D x ␂ .e␃x =x/.g
+(b) Why do you expect the recursion in (a), without doing any analysis, to be
+numerically stable if x > 0 ? How about x < 0 ?
+(c) Support and discuss your answer to (b) by considering yn as a function of
+y0 (which for y0 D f0 .x/ yields fn D fn .x/) and by showing that the
+condition number of this function at f0 is
+.cond yn /.f0 / D
+1
+;
+jen .x/j
+where en .x/ D 1 C x C x 2 =2Š C ␂ ␂ ␂ C x n =nŠ is the nth partial sum of the
+exponential series. fHint: use Leibniz’s formula to evaluate fn .x/.g
+37. Consider the algebraic equation
+x n C ax ␄ 1 D 0; a > 0; n ␃ 2:
+
+(a) Show that the equation has exactly one positive root ␈.a/.
+(b) Obtain a formula for (cond ␈)(a).
+(c) Obtain (good) upper and lower bounds for (cond ␈)(a).
+38. Consider the algebraic equation
+x n C x n␃1 ␄ a D 0; a > 0; n ␃ 2:
+(a) Show that there is exactly one positive root ␈.a/.
+(b) Show that ␈.a/ is well conditioned as a function of a. Indeed, prove
+.cond ␈/.a/ <
+39. Consider Lambert’s equation
+1
+:
+n␄1
+xex D a
+for real values of x and a.
+(a) Show graphically that the equation has exactly one root ␈.a/ ␃ 0 if a ␃ 0,
+exactly two roots ␈2 .a/ < ␈1 .a/ < 0 if ␄1=e < a < 0, a double root ␄1 if
+a D ␄1=e, and no root if a < ␄1=e.
+(b) Discuss the condition of ␈.a/, ␈1 .a/, ␈2 .a/ as a varies in the respective
+intervals.
+40. Given the natural number n, let ␈ D ␈.a/ be the unique positive root of
+the equation x n D ae␃x .a > 0/. Determine the condition of ␈ as a
+function of a; simplify the answer as much as possible. In particular, show that
+(cond ␈/.a/ < 1=n.
+41. Let f .x1 ; x2 / D x1 C x2 and consider the algorithm A given as follows:
+fA W R2 .t; s/ ! R.t; s/
+yA D fl.x1 C x2 /:
+Estimate ␇.x1 ; x2 / D .cond A/.x/, using any of the norms
+q
+kxk1 D jx1 j C jx2 j; kxk2 D
+x12 C x22 ; kxk1 D max .jx1 j; jx2 j/:
+Discuss the answer in the light of the conditioning
+p of f .
+42. This problem deals with the function f .x/ D 1 ␄ x ␄ 1, ␄1 < x < 1.
+(a) Compute the condition number .cond f /.x/.
+(b) Let A be the algorithm that evaluates f .x/ in floating-point arithmetic on
+a computer with machine precision eps, given an (error-free) floating-point
+number x. Let "1 , "2 , "3 be the relative errors due, respectively, to the
+subtraction in 1 ␄ x, to taking the square root, and to the final subtraction of
+1. Assume j"i j ␇ eps (i D 1; 2; 3). Letting fA .x/ be the value of f .x/ so
+computed, write fA .x/ D f .xA / and xA D x.1 C "A /. Express "A in terms
+
+of x, "1 , "2 , "3 (neglecting terms of higher order in the "i ). Then determine
+an upper bound for j"A j in terms of x and eps and finally an estimate of
+.cond A/.x/.
+(c) Sketch a graph of .cond f /.x/ (found in (a)) and a graph of the estimate
+of .cond A/.x/ (found in (b)) as functions of x on .␄1; 1/. Discuss your
+results.
+43. Consider the function f .x/ D 1 ␄ e␃x on the interval 0 ␇ x ␇ 1.
+(a) Show that (cond f ).x/ ␇ 1 on [0,1].
+(b) Let A be the algorithm that evaluates f .x/ for the machine number x in
+floating-point arithmetic (with machine precision eps). Assume that the ex-
+ponential routine returns a correctly rounded answer. Estimate .cond A/.x/
+for 0 ␇ x ␇ 1, neglecting terms of O.eps2 /. fPoint of information:
+ln.1 C "/ D " C O."2 /, " ! 0.g
+(c) Plot .cond f /.x/ and your estimate of .cond A/.x/ as functions of x on
+[0,1]. Comment on the results.
+44. (a) Suppose A is an algorithm that computes the (smooth) function f .x/ for a
+given machine number x, producing fA .x/ D f .x/.1 C "f /, where j"f j ␇
+'.x/eps (eps D machine precision). If 0 < .cond f /.x/ < 1, show that
+.cond A/.x/ ␇
+'.x/
+.cond f /.x/
+if second-order terms in eps are neglected. fHint: set fA .x/ D f .xA /,
+xA D x.1 C "A /, and expand in powers of "A , keeping only the first.g
+x
+(b) Apply the result of (a) to f .x/ D 1␃cos
+; 0 < x < 12 , when evaluated
+sin x
+as shown. (You may assume that cos x and sin x are computed within a
+relative error of eps.) Discuss the answer.
+(c) Do the same as (b), but for the (mathematically equivalent) function
+sin x
+f .x/ D 1Ccos
+; 0 < x < 12 .
+x
+Machine Assignments
+1. Let x D 1 C =106 . Compute the nth power of x for n D 100;000;200;000; : : : ;
+1;000;000 once in single and once in double Matlab precision. Let the two
+results be pn and dpn . Use the latter to determine the relative errors rn of the
+former. Print n; pn ; dpn ; rn ; rn =.n ␂ eps0/, where eps0 is the single-precision
+eps. What should x n be, approximately, when n D 1;000;000? Comment on
+the results.
+2. Compute the derivative dy=dx of the exponential function y D ex at x D 0
+from the difference quotients d.h/ D .eh ␄ 1/= h with decreasing h. Use
+(a) h D h1 WD 2␃i , i D 5 W 5 W 50;
+(b) h D h2 WD .2:2/␃i , i D 5 W 5 W 50.
+
+Print the quantities i; h1; h2; d1 WD d.h1/; d 2 WD d.h2/, the first and two last
+ones in f-format, the others in e-format. Explain what you observe.
+3. Consider the following procedure for determining the limit lim .eh ␄ 1/= h on a
+h!0
+computer. Let
+dn D fl
+␃
+␂ 2␄n
+␄1
+e
+2␃n
+for n D 0; 1; 2; : : :
+and accept as the machine limit the first value satisfying dn D dn␃1
+.n ␃ 1/.
+(a) Write and run a Matlab routine implementing the procedure.
+(b) In R.t; s/-floating-point arithmetic, with rounding by chopping, for what
+value of n will the correct limit be reached, assuming no underflow (of
+2␃n ) occurs? fHint: use eh D 1 C h C 12 h2 C ␂ ␂ ␂ .g Compare with the
+experiment made in (a).
+(c) On what kind of computer (i.e., under what conditions on s and t) will
+underflow occur before the limit is reached?
+4. Euler’s constant ␇ D 0:57721566490153286 : : : is defined as the limit
+␇ D lim ␇n ; where ␇n D 1 C
+n!1
+1
+1
+1
+C C ␂ ␂ ␂ C ␄ ln n:
+2
+3
+n
+Assuming that ␇ ␄ ␇n cn␃d , n ! 1, for some constants c and d > 0, try to
+determine c and d experimentally on the computer.
+5. Letting ␂un D unC1 ␄ un , one has the easy formula
+N
+X
+␂un D uN C1 ␄ u1 :
+nD1
+With un D ln.1 C n/, compute each side (as it stands) for N D 1; 000 W 1; 000 W
+10;000, the left-hand side in Matlab single precision and the right-hand side in
+double
+PN precision. Print the relative discrepancy of the two results. Repeat with
+nD1 un : compute the sum in single and double precision and compare the
+results. Try to explain what you observe.
+6. (a) Write a program to compute
+SN D
+N
+X
+nD1
+X
+1
+1
+1
+␄
+D
+;
+n nC1
+n.n C 1/
+nD1
+N
+once using the first summation and once using the (mathematically equiv-
+alent) second summation. For N D 10k , k D 1 W 7, print the respective
+absolute errors. Comment on the results.
+
+(b) Write a program to compute
+pN D
+N
+Y
+n
+:
+n
+C
+1
+nD1
+For the same values of N as in part (a), print the relative errors. Comment
+on the results.
+7. (a) Prove: based on best possible relative error bounds, the floating-point
+addition fl.fl.x C y/ C z/ is more accurate than fl.x C fl.y C z// if and
+only if jx C yj < jy C zj. As applications, formulate addition rules in the
+cases
+(a1) 0 < x < y < z;
+(a2) x > 0, y < 0, z > 0;
+(a3) x < 0, y > 0, z < 0.
+(b) Consider the nth partial sums of the series defining the zeta function .s/,
+resp., eta function ␎.s/,
+zn D
+n
+X
+1
+kD1
+k
+;
+s
+en D
+n
+X
+.␄1/k␃1
+kD1
+1
+:
+ks
+For s D 2; 11=3; 5; 7:2; 10 and n D 50; 100; 200; 500; 1000, compute these
+sums in Matlab single precision, once in forward direction and once in
+backward direction, and compare the results with Matlab double-precision
+evaluations. Interpret the results in the light of your answers to part (a),
+especially (a2) and (a3).
+8. Let n D 106 and
+n
+X
+ln k:
+s D 1011 n C
+kD1
+(a) Determine s analytically and evaluate to 16 decimal digits.
+(b) The following Matlab program computes s in three different (but mathe-
+matically equivalent) ways:
+%MAI_8B
+%
+n=10ˆ6; s0=10ˆ11*n;
+s1=s0;
+for k=1:n
+s1=s1+log(k);
+end
+s2=0;
+for k=1:n
+s2=s2+log(k);
+
+end
+s2=s2+s0;
+i=1:n;
+s3=s0+sum(log(i));
+[s1 s2 s3]’
+Run the program and discuss the results.
+9. Write a Matlab program that computes the Euclidean condition number of the
+Hilbert matrix H n following the prescription given in footnote 3 of the text.
+(a) The inverse of the Hilbert matrix H n has elements
+␅
+!
+!
+!2
+nCi ␄1 nCj ␄1 i Cj ␄2
+n␄j
+n␄i
+i ␄1
+␆
+i Cj
+H ␃1
+.i C j ␄ 1/
+n ij D .␄1/
+(cf. Note 3 to Sect. 1.3.2). Simplify the expression to avoid factorials of
+large numbers. fHint: express all binomial coefficients in terms of factorials
+and simplify.g
+(b) Implement in Matlab the formula obtained in (a) and reproduce Table 1.1
+of the text.
+10. The (symmetrically truncated) cardinal series of a function f is defined by
+N
+X
+CN .f; h/.x/ D
+␂
+f .kh/ sinc
+kD␃N
+␃
+x ␄ kh
+;
+h
+where h > 0 is the spacing of the data and the sinc function is defined by
+8
+ˆ
+sin. u/
+ˆ
+<
+u
+sinc.u/ D
+ˆ
+:̂
+1
+if u ¤ 0;
+if u D 0:
+Under appropriate conditions, CN .f; h/.x/ approximates f .x/ on Œ␄N h; N h␃.
+(a) Show that
+CN .f; h/.x/ D
+h
+sin
+N
+x X .␄1/k
+f .kh/:
+h
+x ␄ kh
+kD␃N
+Since this requires the evaluation of only one value of the sine function,
+it provides a more efficient way to evaluate the cardinal series than the
+original definition.
+
+Machine Assignments
+43
+(b) While the form of CN given in (a) may be more efficient, it is numerically
+unstable when x is near one of the abscissae kh. Why?
+(c) Find a way to stabilize the formula in (a). fHint: introduce the integer k0
+and the real number t such that x D .k0 C t/h, jtj ␇ 12 .g
+(d) Write a program to compute CN .f; h/.x/ according to the formula in (a)
+and the one developed in (c) for N D 100, h D 0:1, f .x/ D x exp.␄x 2 /,
+and x D 0:55, x D 0:5 C 10␃8 , x D 0:5 C 10␃15 . Print CN .f; h/.x/, f .x/,
+and the error jCN .f; h/.x/ ␄ f .x/j in either case. Compare the results.
+11. In the theory of Fourier series, the numbers
+2 X 1
+k
+1
+C
+tan
+; n D 1; 2; 3; : : : ;
+2n C 1
+k
+2n C 1
+n
+n D
+kD1
+known as Lebesgue constants, are of some importance.
+(a) Show that the terms in the sum increase monotonically with k. How do the
+terms for k near n behave when n is large?
+(b) Compute n for n D 1; 10; 102; : : : ; 105 in Matlab single and double
+precision and compare the results. Do the same with n replaced by dn=2e.
+Explain what you observe.
+12. Sum the series
+(a)
+1
+X
+.␄1/n =nŠ2 ;
+nD0
+(b)
+1
+X
+1=nŠ2
+nD0
+until there is no more change in the partial sums to within the machine
+precision. Generate the terms recursively. Print the number of terms required
+and the value of the sum. (Answers in terms of Bessel functions: (a) J0 .2/;
+cf. Abramowitz and Stegun [1964, (9.1.18)] or Olver et al. [2010, (10.9.1)] and
+(b) I0 .2/; cf. Abramowitz and Stegun [1964, (9.6.16)] or Olver et al. [2010,
+(10.32.1)].)
+P
+1
+13. (P.J. Davis, 1993) Consider the series 1
+kD1 k 3=2 Ck 1=2 . Try to compute the sum
+to three correct decimal digits.
+14. We know from calculus that
+␃
+␂
+1 n
+lim 1 C
+D e:
+n!1
+n
+What is the “machine limit”? Explain.
+15. Let f .x/ D .n C 1/x ␄ 1. The iteration
+xk D f .xk␃1 /; k D 1; 2; : : : ; KI x0 D 1=n;
+in exact arithmetic converges to the fixed point 1=n in one step (Why?). What
+happens in machine arithmetic? Run a program with n D 1 W 5 and K D 10 W
+10 W 50 and explain quantitatively what you observe.
+
+16. Compute the integral 0 ex dx from Riemann sums with n equal subintervals,
+evaluating the integrand at the midpoint of each. Print the Riemann sums for
+n D 5;000 W 5;000 W 100;000 (to 15 decimal digits after the decimal point),
+together with absolute errors. Comment on the results.
+R1
+17. Let yn D 0 t n e␃t dt, n D 0; 1; 2; : : : .
+(a) Use integration by parts to obtain a recurrence formula relating yk to yk␃1
+for k D 1; 2; 3; : : : ; and determine the starting value y0 .
+(b) Write and run a Matlab program that generates y0 ; y1 ; : : : ; y20 , using the
+recurrence of (a), and print the results to 15 decimal digits after the decimal
+point. Explain in detail (quantitatively, using mathematical analysis) what
+is happening.
+(c) Use the recursion of (a) in reverse order, starting (arbitrarily) with yN D
+0. Place into five consecutive columns of a (21 ␅ 5) matrix Y the values
+.N /
+.N /
+.N /
+y0 ; y1 ; : : : ; y20 thus obtained for N D 22; 24; 26; 28; 30. Determine
+how much consecutive columns of Y differ from one another by printing
+ei D max j .Y .W; i C 1/ ␄ Y .W; i // :=Y .W; i C 1/j;
+i D 1; 2; 3; 4:
+Print the last column Y .W; 5/ of Y and explain why this represents accurately
+the column vector of the desired quantities y0 ; y1 ; : : : ; y20 .
+Selected Solutions to Exercises
+14. We may assume x > 0, since otherwise we could multiply z by ␄1 and the
+result by ␄i.
+p
+In the first expression for z there will be a large cancellation error in
+the imaginary part when jyj is very small, whereas in the second expression
+all arithmetic operations are benign. Illustration: z D 4:5 C 0:025i (in eight
+significant digits)
+r D 4:5000694;
+␇ r ␄ x ␈1=2
+vD
+D 5:8906706 ␅ 10␃3 ;
+2
+y
+vD ␅
+D 5:8925338 ␅ 10␃3 :
+␆
+rCx 1=2
+2 2
+The last five digits in the first evaluation of v are in error!
+21. (a) We have
+p1 D x1 ;
+pk D xk pk␃1 .1 C "k /; j"k j ␇ eps; k D 2; 3; : : : ; n:
+
+Solutions to Exercises
+45
+Therefore,
+p2 D x1 x2 .1 C "2 /;
+p3 D x1 x2 x3 .1 C "2 /.1 C "3 /;
+␂ ␂ ␂ ␂ ␂ ␂ ␂ ␂ ␂ ␂ ␂ ␂ ␂ ␂ ␂ ␂ ␂ ␂ ␂
+pn D x1 x2 ␂ ␂ ␂ xn .1 C "2 /.1 C "3 / ␂ ␂ ␂ .1 C "n /;
+so that
+pn ␄ x1 x2 ␂ ␂ ␂ xn
+D .1 C "2 /.1 C "3 / ␂ ␂ ␂ .1 C "n / ␄ 1 DW E:
+x1 x2 ␂ ␂ ␂ xn
+If E ␃ 0, then jEj ␇ .1 C eps/n␃1 ␄ 1; otherwise, jEj ␇ 1 ␄ .1 ␄ eps/n␃1 .
+Since the first bound is larger than the second, we get
+jEj ␇ .1 C eps/n␃1 ␄ 1:
+(b) Using the binomial theorem, one has
+␈
+␇
+␇r ␈
+␇r ␈
+.1 C eps/r ␄ 1 D 1 C
+eps C
+eps2 C ␂ ␂ ␂ C epsr ␄ 1
+1
+2
+r ␄1
+.r ␄ 1/.r ␄ 2/
+eps C
+eps2 C ␂ ␂ ␂
+2
+3Š
+D r ␂ eps 1 C
+C
+Since r ␂ eps <
+.r ␄ 1/.r ␄ 2/ ␂ ␂ ␂ 1
+epsr␃1 :
+rŠ
+1
+, one has also
+10
+.r ␄ k/ eps <
+1
+; k D 1; 2; : : : ; r ␄ 1;
+10
+and so
+.1 C eps/r ␄ 1 < r ␂ eps 1 C
+< r ␂ eps ␂ 10
+1 ␃1
+1
+1
+10 C 10␃2 C ␂ ␂ ␂ C 10␃.r␃1/
+2Š
+3Š
+rŠ
+1 ␃1
+1
+10 C 10␃2 C ␂ ␂ ␂
+1Š
+2Š
+␄1
+D r ␂ eps ␂ 10fe10
+< 1:06 ␂ r ␂ eps:
+␄ 1g D 1:051709 : : : r ␂ eps
+
+Hence, if .n ␄ 1/eps < 1=10, the result in (a) can be simplified to
+jEj ␇ 1:06.n ␄ 1/eps:
+34. We have
+cos ˛. / D
+D
+q T .a ␄ q/
+q T b. /
+D
+kqk ␂ kb. /k
+Œ.a ␄ q/T .a ␄ q/␃1=2
+0␄
+.1 ␄ 2 0 C
+DW R. /;
+2 /1=2
+˛. / D cos␃1 R. /; R. 0 / D 0 if j 0 j < 1;
+␄1
+˛0 . / D p
+R0 . /
+1 ␄ R2 . /
+␄1
+D p
+1 ␄ R2 . /
+␅
+For
+D
+␄.1 ␄ 2 0 C
+2 1=2
+/
+␄ . 0 ␄ /Œ.1 ␄ 2 0 C
+.1 ␄ 2 0 C 2 /
+2 1=2 0
+/
+␃
+:
+0 , therefore, assuming j 0 j < 1, we get
+˛0 . 0 / D
+.cond ˛/. 0 / D
+.1 ␄ 02 /1=2
+1
+D
+;
+2
+1␄ 0
+.1 ␄ 02 /1=2
+j 0 j .1␃ 12 /1=2
+0
+1
+2
+D
+2
+j 0j
+:
+.1 ␄ 02 /1=2
+If 0 D 0, i.e., a is already orthogonal to q, hence b D a, then .cond ˛/. 0 / D
+0, as expected. If j 0 j " 1, then .cond ˛/. 0 / " 1, since in the limit, a is
+parallel to q and cannot be orthogonalized. In practice, if j 0 j is close to 1, the
+problem of ill-conditioning can be overcome by a single, or possibly repeated,
+reorthogonalization.
+44. (a) Following the Hint, we have
+fA .x/ D f .x/.1 C "f / D f .xA /
+D f .x.1 C "A // D f .x C x"A /
+D f .x/ C x"A f 0 .x/ C O."2A /:
+
+Neglecting the O."2A / term, one gets
+x"A f 0 .x/ D f .x/"f ;
+hence
+ˇ
+ˇ
+ˇx ␄ x ˇ
+ˇ f .x/ ˇ
+'.x/
+ˇ
+ˇ A
+ˇ j"f j ␇
+ˇ
+eps;
+ˇ D j"A j D ˇ 0
+ˇ
+x
+xf .x/ ˇ
+.cond f /.x/
+which proves the assertion.
+(b) One easily computes
+.cond f /.x/ D
+x
+;
+sin x
+0<x<
+2
+:
+Furthermore,
+fA .x/ D
+.1 ␄ .cos x/.1 C "1 //.1 C "2 /
+.1 C "4 /; j"i j ␇ eps;
+.sin x/.1 C "3 /
+where "1 , "2 , "3 , "4 are the relative errors committed, respectively, in evaluating
+the cosine function, the difference in the numerator, the sine function, and the
+quotient. Neglecting terms of O."2i /, one obtains by a simple computation that
+fA .x/ D
+1 ␄ cos x n
+cos x o
+1 C "2 C "4 ␄ "3 ␄ "1
+;
+sin x
+1 ␄ cos x
+that is,
+ˇ
+ˇ
+j"f j D ˇ"2 C "4 ␄ "3 ␄ "1
+cos x ␈
+cos x ˇˇ ␇
+eps:
+ˇ␇ 3C
+1 ␄ cos x
+1 ␄ cos x
+Therefore,
+'.x/ D 3 C
+cos x
+;
+1 ␄ cos x
+and one gets
+.cond A/.x/ ␇
+sin x ␇
+cos x ␈
+3C
+; 0<x< :
+x
+1 ␄ cos x
+2
+Obviously, .cond A/.x/ ! 1 as x ! 0, whereas .cond A/.x/ ! 6= as
+x ! =2. The algorithm is ill-conditioned near x D 0 (cancellation error), but
+well conditioned near =2. The function itself is quite well conditioned,
+1 ␇ .cond f /.x/ ␇
+2
+:
+
+(c) In this case (the condition of f being of course the same),
+fA .x/ D
+.sin x/.1 C "1 /
+.1 C "4 /; j"i j ␇ eps;
+.1 C .cos x/.1 C "2 //.1 C "3 /
+giving
+fA .x/ D
+cos x
+sin x
+1 C "1 ␄ "3 C "4 ␄ "2
+;
+1 C cos x
+1 C cos x
+that is,
+ˇ ␂
+ˇ
+␃
+ˇ
+cos x ˇˇ
+cos x
+ˇ
+j"f j D ˇ"1 ␄ "3 C "4 ␄ "2
+eps;
+␇
+3
+C
+1 C cos x ˇ
+1 C cos x
+and
+sin x
+.cond A/.x/ ␇
+x
+␂
+3C
+cos x
+1 C cos x
+␃
+:
+Now, A is entirely well conditioned,
+6
+␇ .cond A/.x/ ␇
+7
+;
+2
+0<x<
+2
+:
+Selected Solutions to Machine Assignments
+7. (a) For arbitrary real x, y, z, the first addition can be written as
+fl.fl.x C y/ C z/ D ..x C y/.1 C "1 / C z/.1 C "2 /
+␈ x C y C z C .x C y/"1 C .x C y C z/"2
+␃
+␂
+xCy
+"1 C "2 ;
+D .x C y C z/ 1 C
+xCyCz
+where the "i are bounded in absolute value by eps. The best bound for the
+relative error is
+␃
+␂
+jx C yj
+C 1 eps:
+
+Solutions to Machine Assignments
+49
+Likewise, for the second addition, there holds (interchange x and z)
+␂
+jrel:err:j ␇
+␃
+jy C zj
+C 1 eps:
+jx C y C zj
+Based on these two error bounds, the first addition is more accurate than
+the second if and only if jx C yj < jy C zj, as claimed.
+Examples
+(a1) 0 < x < y < z. Here,
+jx C yj D x C y < y C z D jy C zj:
+Thus, addition in increasing order is more accurate.
+(a2) x > 0, y < 0, z > 0. Here,
+jx C yj D jx ␄ jyjj ;
+jy C zj D jz ␄ jyjj ;
+and adding to the negative number y the positive number closer to jyj
+first is more accurate.
+(a3) x < 0, y > 0, z < 0. Here,
+jx C yj D j␄jxj C yj D jjxj ␄ yj ;
+jy C zj D jy ␄ jzjj D jjzj ␄ yj ;
+and adding to the positive number y the negative number first whose
+modulus is closer to y is more accurate.
+(b)
+PROGRAM
+%MAI_7B
+%
+f0=’%6.4f %8.1e %9.2e %9.2e %9.2e %9.2e\n’;
+disp(’
+zeta
+eta’)
+disp(’
+s
+n
+forw
+backw
+forw
+backw’)
+for s=[2 11/3 5 7.2 10]
+for n=[50 100 200 500 1000]
+k=1:n;
+z=sum(1./k.ˆs);
+e=sum((-1).ˆ(k-1)./k.ˆs);
+zf=single(0); ef=single(0);
+for kf=1:n
+zf=zf+single(1/kfˆs);
+
+
