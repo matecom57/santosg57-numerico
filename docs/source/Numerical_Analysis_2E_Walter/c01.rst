@@ -1,7 +1,8 @@
 c01
 ===
 
-Preface to the Second Edition
+**Preface to the Second Edition**
+
 In this second edition, the outline of chapters and sections has been preserved. The
 subtitle “An Introduction”, as suggested by several reviewers, has been deleted. The
 content, however, is brought up to date, both in the text and in the notes. Many
@@ -9,12 +10,14 @@ passages in the text have been either corrected or improved. Some biographical
 notes have been added as well as a few exercises and computer assignments. The
 typographical appearance has also been improved by printing vectors and matrices
 consistently in boldface types.
+
 With regard to computer language in illustrations and exercises, we now adopt
 uniformly Matlab. For readers not familiar with Matlab, there are a number of
 introductory texts available, some, like Moler [2004], Otto and Denier [2005],
 Stanoyevitch [2005] that combine Matlab with numerical computing, others, like
 Knight [2000], Higham and Higham [2005], Hunt, Lipsman and Rosenberg [2006],
 and Driscoll [2009], more exclusively focused on Matlab.
+
 The major novelty, however, is a complete set of detailed solutions to all exercises
 and machine assignments. The solution manual is available to instructors upon
 request at the publisher’s website http://www.birkhauser-science.com/978-0-8176-
@@ -23,7 +26,8 @@ what is expected. The bibliography has been expanded to reflect technical advanc
 in the field and to include references to new books and expository accounts. As a
 result, the text has undergone an expansion in size of about 20%.
 
-Preface to the First Edition
+**Preface to the First Edition**
+
 The book is designed for use in a graduate program in Numerical Analysis that
 is structured so as to include a basic introductory course and subsequent more
 specialized courses. The latter are envisaged to cover such topics as numerical
@@ -44,6 +48,7 @@ used in this book, therefore, is to be taken in the narrow sense of the numerica
 analogue of Mathematical Analysis, comprising such topics as machine arithmetic,
 the approximation of functions, approximate differentiation and integration, and the
 approximate solution of nonlinear equations and of ordinary differential equations.
+
 What is being covered, on the other hand, is done so with a view toward
 stressing basic principles and maintaining simplicity and student-friendliness as far
 as possible. In this sense, the book is “An Introduction”. Topics that, even though
@@ -52,12 +57,13 @@ bounds of simplicity striven for, are referenced in detailed bibliographic notes
 end of each chapter. It is hoped, in this way, to place the material treated in proper
 context and to help, indeed encourage, the reader to pursue advanced modern topics
 in more depth.
+
 A significant feature of the book is the large collection of exercises that
 are designed to help the student develop problem-solving skills and to provide
 interesting extensions of topics treated in the text. Particular attention is given to
-
 machine assignments, where the student is encouraged to implement numerical
 techniques on the computer and to make use of modern software packages.
+
 The author has taught the basic introductory course and the advanced course on
 ordinary differential equations regularly at Purdue University for the last 30 years
 or so. The former, typically, was offered both in the fall and spring semesters, to a
@@ -69,6 +75,7 @@ Mathematics held in Perugia, Italy. Indeed, for some time, these notes existed o
 in the Italian language. Over the years, they were progressively expanded, updated,
 and transposed into English, and along with that, notes for the advanced course were
 developed. This, briefly, is how the present book evolved.
+
 A long gestation period such as this, of course, is not without dangers, the
 most notable one being a tendency for the material to become dated. The author
 tried to counteract this by constantly updating and revising the notes, adding newer
@@ -77,6 +84,7 @@ time, one develops a sense for what is likely to stand the test of time and what
 may only be of temporary interest, and one selects and deletes accordingly. Another
 benefit is the steady accumulation of exercises and the opportunity to have them
 tested on a large and diverse student population.
+
 The purpose of academic teaching, in the author’s view, is twofold: to transmit
 knowledge, and, perhaps more important, to kindle interest and even enthusiasm
 in the student. Accordingly, the author did not strive for comprehensiveness –
@@ -91,11 +99,13 @@ of the text. Each chapter, as already mentioned, has a set of appended notes tha
 help the reader to pursue related topics in more depth and to consult the specialized
 literature. It is here where attributions and historical remarks are made, and where
 citations to the literature – both textbook and research – appear.
+
 The main text is preceded by a prologue, which is intended to place the book in
 proper perspective. In addition to other textbooks on the subject, and information
 on software, it gives a detailed list of topics not treated in this book, but definitely
 belonging to the vast area of computational mathematics, and it provides ample
 references to relevant texts. A list of numerical analysis journals is also included.
+
 The reader is expected to have a good background in calculus and advanced
 calculus. Some passages of the text require a modest degree of acquaintance with
 linear algebra, complex analysis, or differential equations. These passages, however,
@@ -113,8 +123,10 @@ not least, he owes a measure of gratitude to Connie Wilson for typing a prelimin
 version of the text and to Adam Hammer for assisting the author with the more
 intricate aspects of LaTeX.
 
-Prologue
-P1 Overview
+**Prologue**
+
+**P1 Overview**
+
 Numerical Analysis is the branch of mathematics that provides tools and methods
 for solving mathematical problems in numerical form. The objective is to develop
 detailed computational procedures, capable of being implemented on electronic
@@ -125,6 +137,7 @@ Complexity Theory, which analyzes the number of “operations” and the amount 
 computer memory required to solve a problem; and Parallel Computation, which
 is concerned with organizing computational procedures in a manner that allows
 running various parts of the procedures simultaneously on different processors.
+
 The problems dealt with in computational mathematics come from virtually
 all branches of pure and applied mathematics. There are computational aspects
 in number theory, combinatorics, abstract algebra, linear algebra, approximation
@@ -161,6 +174,7 @@ part of the chapter, however, deals with polynomial interpolation and associated
 error estimates, which are basic to many numerical procedures for integrating
 functions and differential equations. Also discussed briefly is inverse interpolation,
 an idea useful in solving equations.
+
 First applications of interpolation theory are given in Chap. 3, where the tasks
 presented are the computation of derivatives and definite integrals. Although the
 formulae developed for derivatives are subject to the detrimental effects of machine
@@ -176,10 +190,12 @@ chapter ends with a discussion of extrapolation techniques; although applicable 
 more general problems, they are inserted here since the composite trapezoidal rule
 together with the Euler–Maclaurin formula provides the best-known application –
 Romberg integration.
+
 Chapter 4 deals with iterative methods for solving nonlinear equations and
 systems thereof, the pièce de résistance being Newton’s method. The emphasis here
 lies in the study of, and the tools necessary to analyze, convergence. The special
 case of algebraic equations is also briefly given attention.
+
 Chapter 5 is the first of three chapters devoted to the numerical solution of
 ordinary differential equations. It concerns itself with one-step methods for solving
 initial value problems, such as the Runge–Kutta method, and gives a detailed
@@ -189,26 +205,32 @@ particular, Dahlquist’s theory of stability and its applications, is the subje
 Chap. 6. The final chapter (Chap. 7) is devoted to boundary value problems and their
 solution by shooting methods, finite difference techniques, and variational methods.
 
-P2 Numerical Analysis Software
+**P2 Numerical Analysis Software**
+
 There are many software packages available, both in the public domain and dis-
 tributed commercially, that deal with numerical analysis algorithms. A widely used
 source of numerical software is Netlib, accessible at http://www.netlib.org.
+
 Large collections of general-purpose numerical algorithms are contained in
 sources such as Slatec (http://www.netlib.org/slatec) and TOMS
 (ACM Transactions on Mathematical Software). Specialized packages relevant
 to the topics in the chapters ahead are identified in the “Notes” to each chapter.
 Likewise, specific files needed to do some of the machine assignments in the
 Exercises are identified as part of the exercise.
+
 Among the commercial software packages we mention the Visual Numerics
 (formerly IMSL) and NAG libraries. Interactive systems include HiQ, Macsyma,
 Maple, Mathcad, Mathematica, and Matlab. Many of these packages, in addition
 to numerical computation, have symbolic computation and graphics capabilities.
 Further information is available in the Netlib file commercial. For more libraries,
 and for interactive systems, also see Lozier and Olver [1994, Sect. 3].
+
 In this text we consistently use Matlab as a vehicle for describing algorithms
 and as the software tool for carrying out some of the exercises and all machine
 assignments.
-P3 Textbooks and Monographs
+
+**P3 Textbooks and Monographs**
+
 We provide here an annotated list (ordered alphabetically with respect to authors)
 of other textbooks on numerical analysis, written at about the same, or higher, level
 as the present one. Following this, we also mention books and monographs dealing
@@ -220,13 +242,15 @@ published within the last 25 years or so. Even so, we have had to be selective. 
 value judgment is to be implied by our selections or omissions.) A reader with access
 to the AMS (American Mathematical Society) MathSci Net homepage will have no
 difficulty in retrieving a more complete list of relevant items, including older texts.
-P3.1 Selected Textbooks on Numerical Analysis
-Atkinson [1989] A comprehensive in-depth treatment of standard topics short of
+
+**P3.1 Selected Textbooks on Numerical Analysis**
+
+* Atkinson [1989] A comprehensive in-depth treatment of standard topics short of
 partial differential equations; includes an appendix describing some of the better-
 known software packages.
 
-Chapter 1
-Machine Arithmetic and Related Matters
+**Chapter 1 Machine Arithmetic and Related Matters**
+
 The questions addressed in this first chapter are fundamental in the sense that
 they are relevant in any situation that involves numerical machine computation,
 regardless of the kind of problem that gave rise to these computations. In the first
@@ -238,6 +262,7 @@ errors, called roundoff errors. Additional errors are introduced when the indivi
 arithmetic operations are carried out on the computer. In themselves, these errors
 are harmless, but acting in concert and propagating through a lengthy computation,
 they can have significant – even disastrous – effects.
+
 Most problems involve input data not representable exactly on the computer.
 Therefore, even before the solution process starts, simply by storing the input in
 computer memory, the problem is already slightly perturbed, owing to the necessity
@@ -250,6 +275,7 @@ are much larger, the problem is called ill conditioned. It is desirable to measu
 a single number – the condition number of the problem – the extent to which the
 solution is sensitive to perturbations in the input. The larger this number, the more
 ill conditioned the problem.
+
 Once the solution process starts, additional rounding errors will be committed,
 which also contaminate the solution. The resulting errors, in contrast to those
 caused by input errors, depend on the particular solution algorithm. It makes sense,
@@ -258,12 +284,15 @@ usually quite a bit harder. The quality of the computed solution is then determi
 by both (essentially the product of) the condition of the problem and the condition
 of the algorithm.
 
-1.1 Real Numbers, Machine Numbers, and Rounding
+**1.1 Real Numbers, Machine Numbers, and Rounding**
+
 We begin with the number system commonly used in mathematical analysis and
 confront it with the more primitive number system available to us on any particular
 computer. We identify the basic constant (the machine precision) that determines
 the level of precision attainable on such a computer.
-1.1.1 Real Numbers
+
+**1.1.1 Real Numbers**
+
 One can introduce real numbers in many different ways. Mathematicians favor
 the axiomatic approach, which leads them to define the set of real numbers as a
 “complete Archimedean ordered field.” Here we adopt a more pedestrian attitude
@@ -271,64 +300,61 @@ and consider the set of real numbers R to consist of positive and negative numbe
 represented in some appropriate number system and manipulated in the usual
 manner known from elementary arithmetic. We adopt here the binary number
 system, since it is the one most commonly used on computers. Thus,
-x 2 R iff x D ˙ .bn 2n C bn␃1 2n␃1 C ␂ ␂ ␂ C b0 C b␃1 2␃1 C b␃2 2␃2 C ␂ ␂ ␂ /: (1.1)
-Here n ␃ 0 is some integer, and the “binary digits” bi are either 0 or 1,
-bi D 0 or bi D 1 for all i:
+
+.. math::
+
+   x \in \mathbb{R} \text{ iff } x = \pm (b_n 2^n + b_{n-1} 2^{n-1} + ... + b_0 + b_{-1} 2^{-1} + b_{-2} 2^{-2} + ...)
+
+
+Here :math:`n \geq 0` is some integer, and the “binary digits” :math:`b_i` are either 0 or 1,
+
+.. math::
+
+   b_i = 0 \text{ or } b_i = 1 \text{ for all } i.
+
 (1.2)
+
 It is important to note that in general we need infinitely many binary digits to
 represent a real number. We conveniently write such a number in the abbreviated
 form (familiar from the decimal number system)
-x D ˙ .bn bn␃1 ␂ ␂ ␂ b0 : b␃1 b␃2 b␃3 ␂ ␂ ␂ /2 ;
+
+.. math::
+
+   x = \pm(b_n b_{n-1} ... b_0.b_{-1} b_{-2} b_{-3}...)_2
+
 (1.3)
+
 where the subscript 2 at the end is to remind us that we are dealing with a binary
 number. (Without this subscript, the number could also be read as a decimal number,
 which would be a source of ambiguity.) The dot in (1.3) – appropriately called the
 binary point – separates the integer part on the left from the fractional part on the
-right. Note that representation (1.3) is not unique, for example, .0:0111 : : :/2 D
-.0:1/2 . We regain uniqueness if we always insist on a finite representation, if one
+right. Note that representation (1.3) is not unique, for example, :math:`(0.011\bar{1}...)_2=(0.1)_2`
+. We regain uniqueness if we always insist on a finite representation, if one
 exists.
-1
-Examples. 1. .10011:01/2 D 24 C 21 C 20 C 2␃2 = 16 C 2 C 1 C D .19:25/10
-4
-1
-1
-1 ␂ ␃m
-X
-X
-X
-1
-1
-2. .:010101 : : :/2 D
-2␃k D
-2␃2m D
-4
-4
-kD2
-mD1
-mD0
-.k even/
-1
-1
-D 1␃1 1 D D .0:333 : : :/10
-4
-3
-4
 
-3.
-3
-1
-D .0:2/10 D .0:00110011 : : :/2
-5
+**Examples.**
+
+1. :math:`(10011.01)_2 = 2^4 + 2^1 + 2^0 + 2^{-2} = 16 + 2 + \frac{1}{4} =  (19.25)_{10}
+
+2. :math:`(.0101\bar{01}...)_2 = \sum_{k=2, k par}^{\infty} 2^{-k} = \sum_{m=1}^{\infty} 2^{-2m} = \frac{1}{4} \sum_{m=0}^{\infty} (\frac{1}{4})^m
+
+:nath:`\frac{1}{4} \frac{1}{1-\frac{1}{4}} = \frac{1}{3} = (0.33\bar{3}...)_{10}`
+
+3. :math:`\frac{1}{5} = (0.2)_{10} = (0.0011\bar{0011}...)_2`
+
 To determine the binary digits on the right, one keeps multiplying by 2 and
 observing the integer part in the result; if it is zero, the binary digit in question
 is 0, otherwise 1. In the latter case, the integral part is removed and the process
 repeated.
+
 The last example is of interest insofar as it shows that to a finite decimal number
 there may correspond a (nontrivial) infinite binary representation. One cannot
 assume, therefore, that a finite decimal number is exactly representable on a binary
 computer. Conversely, however, to a finite binary number there always corresponds
 a finite decimal representation. (Why?)
-1.1.2 Machine Numbers
+
+**1.1.2 Machine Numbers**
+
 There are two kinds of machine numbers: floating point and fixed point. The first
 corresponds to the “scientific notation” in the decimal system, whereby a number is
 written as a decimal fraction times an integral power of 10. The second allows only
@@ -336,46 +362,63 @@ for fractions. On a binary computer, one consistently uses powers of 2 instead o
 More important, the number of binary digits, both in the fraction and in the exponent
 of 2 (if any), is finite and cannot exceed certain limits that are characteristics of the
 particular computer at hand.
-1.1.2.1 Floating-Point Numbers
+
+**1.1.2.1 Floating-Point Numbers**
+
 We denote by t the number of binary digits allowed by the computer in the fractional
 part and by s the number of binary digits in the exponent. Then the set of (real)
-floating-point numbers on that computer will be denoted by R.t; s/. Thus,
-x 2 R.t; s/ iff x D f ␂ 2e ;
-(1.4)
-where, in the notation of (1.3),
-f D ˙ .: b␃1 b␃2 ␂ ␂ ␂ b␃t /2 ; e D ˙ .cs␃1 cs␃2 ␂ ␂ ␂ c0 :/2 :
-(1.5)
-Here all bi and cj are binary digits, that is, either zero or one. The binary fraction
-f is usually referred to as the mantissa of x and the integer e as the exponent of x.
-The number x in (1.4) is said to be normalized if in its fraction f we have b␃1 D 1.
-We assume that all numbers in R.t; s/ are normalized (with the exception of x D 0,
-which is treated as a special number). If x ¤ 0 were not normalized, we could
+floating-point numbers on that computer will be denoted by :math:`\mathbb{R}(t,s)`. Thus,
 
+.. math::
+
+   x \in \mathbb{R}(t,s) \text{ iff }  x = f \dot 2^e.
+
+(1.4)
+
+where, in the notation of (1.3),
+
+.. math::
+
+   f = \pm (.b_{-1} b_{-2} ... b_{-t})_2, e= \pm(c_{s-1} c_{s-2} ... c_0.)_2.
+
+
+(1.5)
+
+Here all :math:`b_i` and :math:`c_j` are binary digits, that is, either zero or one. The binary fraction
+f is usually referred to as the mantissa of x and the integer e as the exponent of x.
+The number x in (1.4) is said to be normalized if in its fraction f we have :math:`b_{-1}=1`.
+We assume that all numbers in R.t; s/ are normalized (with the exception of x D 0,
+which is treated as a special number). If :math:`x \neq 0` were not normalized, we could
 multiply f by an appropriate power of 2, to normalize it, and adjust the exponent
 accordingly. This is always possible as long as the adjusted exponent is still in the
 admissible range.
+
 We can think of a floating-point number (1.4) as being accommodated in a
 machine register as shown in Fig. 1.1. The figure does not quite correspond to reality,
 but is close enough to it for our purposes.
+
 Note that the set (1.4) of normalized floating-point numbers is finite and is thus
 represented by a finite set of points on the real line. What is worse, these points are
 not uniformly distributed (cf. Ex. 1). This, then, is all we have to work with!
+
 It is immediately clear from (1.4) and (1.5) that the largest and smallest
 magnitude of a (normalized) floating-point number is given, respectively, by
-max jxj D .1 ␄ 2␃t / 22 ␃1 ;
-s
-x2R.t;s/
-min jxj D 2␃2 :
-s
-x2R.t;s/
+
+.. math::
+
+   \max_{x \in \mathbb{R}(t,s)} |x| = (1 - 2^{-t}) 2^{2^s-1}, \min_{x \in \mathbb{R}(t.s)} |x| = 2^{-2^s}
+
+
 (1.6)
-On a Sun Sparc workstation, for example, one has t D 23, s D 7, so that the
-maximum and minimum in (1.6) are 1:70 ␅ 1038 and 2:94 ␅ 10␃39 , respectively.
+
+On a Sun Sparc workstation, for example, one has t = 23, s = 7, so that the
+maximum and minimum in (1.6) are :math:`1.70 \times 10^{-38}` and :math:`2.94 \times 10^{-39}`, respectively.
 (Because of an asymmetric internal hardware representation of the exponent on
 these computers, the true range of floating-point numbers is slightly shifted, more
-like from 1:18 ␅ 10␃38 to 3:40 ␅ 1038 .) Matlab arithmetic, essentially double
-precision, uses t D 53 and s D 10, which greatly expands the number range from
-something like 10␃308 to 10C308 .
+like from :math:`1.18 \times 10^{-38}` to :math:`3.40 \times 10^{38}`.) Matlab arithmetic, essentially double
+precision, uses t = 53 and s = 10, which greatly expands the number range from
+something like :math:`10^{-308}` to :math:`10^{+308}.
+
 A real nonzero number whose modulus is not in the range determined by (1.6)
 cannot be represented on this particular computer. If such a number is produced
 during the course of a computation, one says that overflow has occurred if its
@@ -386,13 +429,15 @@ is less serious, and one may get away with replacing the delinquent number by
 zero. However, this is not foolproof. Imagine that at the next step the number that
 underflowed is to be multiplied by a huge number. If the replacement by zero has
 been made, the result will always be zero.
-To increase the precision, one can use two machine registers to represent a
-machine number. In effect, one then embeds R.t; s/ ␆ R.2t; s/, and calls x 2
-R.2t; s/ a double-precision number.
 
-1.1.2.2 Fixed-Point Numbers
+To increase the precision, one can use two machine registers to represent a
+machine number. In effect, one then embeds :math:`\mathbb{R}(t,s) \subset \mathbb{R}(2t,s)`
+, and calls :math:`x \in \mathbb{R}(2t,s)` a double-precision number.
+
+**1.1.2.2 Fixed-Point Numbers**
+
 This is the case (1.4) where e = 0. That is, fixed-point numbers are binary fractions,
-x D f , hence jf j < 1. We can therefore only deal with numbers that are in
+x = f , hence |f|  < 1. We can therefore only deal with numbers that are in
 the interval (–1,1). This, in particular, requires extensive scaling and rescaling to
 make sure that all initial data, as well as all intermediate and final results, lie in that
 interval. Such a complication can only be justified in special circumstances where
@@ -400,7 +445,9 @@ machine time and/or precision is at a premium. Note that on the same computer as
 considered before, we do not need to allocate space for the exponent in the machine
 register, and thus have in effect s Ct binary digits available for the fraction f , hence
 more precision; cf. Fig. 1.2.
-1.1.2.3 Other Data Structures for Numbers
+
+**1.1.2.3 Other Data Structures for Numbers**
+
 Complex floating-point numbers consist of pairs of real floating-point numbers,
 the first of the pair representing the real part and the second the imaginary part.
 To avoid rounding errors in arithmetic operations altogether, one can employ
@@ -410,7 +457,9 @@ number. The Euclidean algorithm is used to remove common factors. A device
 that allows keeping track of error propagation and the influence of data errors is
 interval arithmetic involving intervals guaranteed to contain the desired numbers. In
 complex arithmetic, one employs rectangular or circular domains.
-1.1.3 Rounding
+
+**1.1.3 Rounding**
+
 A machine register acts much like the infamous Procrustes bed in Greek mythology.
 Procrustes was the innkeeper whose inn had only beds of one size. If a fellow came
 along who was too tall to fit into his beds, he cut off his feet. If the fellow was too
@@ -419,36 +468,30 @@ long, its tail end (not the head) is cutoff; if it is too short, it is padded by
 the end.
 
 More specifically, let
-1
-X
-x 2 R; x D ˙
-!
-b␃k 2
-␃k
-2e
-(1.7)
-kD1
+
+.. math::
+
+   x \in \mathbb{R}, x = \pm (\sum_{k=1}^{\infty} b_{-k} 2^{-k})2^e
+
 be the “exact” real number (in normalized floating-point form) and
-␄
-␄
-x 2 R.t; s/; x D ˙
-t
-X
-!
-␄ ␃k
-b␃k
-2
-2e
-␂
+
+.. math::
+
+   x^* \in \mathbb{R}(t,s), x^* = \pm (\sum_{k=1}^{\infty} b_{-k}^* 2^{-k})2^{e^*}
+
 (1.8)
-kD1
+
 the rounded number. One then distinguishes between two methods of rounding, the
 first being Procrustes’ method.
+
 (a) Chopping. One takes
-␄
-x ␄ D chop.x/; e␄ D e; b␃k
-D b␃k for k D 1; 2; : : : ; t:
+
+.. math::
+
+   x^* = \chop(x), e^* = e, b_{-k}^* = b_{-k} \text{ for } k =1,2, ..., t
+
 (1.9)
+
 (b) Symmetric rounding. This corresponds to the familiar rounding up or rounding
 down in decimal arithmetic, based on the first discarded decimal digit: if it is
 larger than or equal to 5, one rounds up; if it is less than 5, one rounds down. In
@@ -456,16 +499,19 @@ binary arithmetic, the procedure is somewhat simpler, since there are only two
 possibilities: either the first discarded binary digit is 1, in which case one rounds
 up, or it is 0, in which case one rounds down. We can write the procedure very
 simply in terms of the chop operation in (1.9):
-␃
-␂
-1 ␃t e
-x D rd.x/; rd.x/ WD chop x C ␂ 2 ␂ 2 :
-2
-␄
+
+.. math::
+
+   x^* = \rd(x), \rd(x) := \chp(x + \frac{1}{2} \dot 2^{-t} \dot 2^e)
+
 (1.10)
+
 There is a small error incurred in rounding, which is most easily estimated in the
-case of chopping. Here the absolute error jx ␄ x ␄ j is
-ˇ
+case of chopping. Here the absolute error :math:`|x - x^*|` is
+
+.. math:
+
+   
 ˇ
 1
 ˇ
