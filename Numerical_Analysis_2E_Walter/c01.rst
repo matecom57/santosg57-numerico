@@ -1,0 +1,473 @@
+Chapter 1 Machine Arithmetic and Related Matters
+
+The questions addressed in this first chapter are fundamental in the sense that
+they are relevant in any situation that involves numerical machine computation,
+regardless of the kind of problem that gave rise to these computations. In the first
+place, one has to be aware of the rather primitive type of number system available
+on computers. It is basically a finite system of numbers of finite length, thus a far cry
+from the idealistic number system familiar to us from mathematical analysis. The
+passage from a real number to a machine number entails rounding, and thus small
+errors, called roundoff errors. Additional errors are introduced when the individual
+arithmetic operations are carried out on the computer. In themselves, these errors
+are harmless, but acting in concert and propagating through a lengthy computation,
+they can have significant – even disastrous – effects.
+
+Most problems involve input data not representable exactly on the computer.
+Therefore, even before the solution process starts, simply by storing the input in
+computer memory, the problem is already slightly perturbed, owing to the necessity
+of rounding the input. It is important, then, to estimate how such small perturbations
+in the input affect the output, the solution of the problem. This is the question of
+the (numerical) condition of a problem: the problem is called well conditioned if the
+changes in the solution of the problem are of the same order of magnitude as the
+perturbations in the input that caused those changes. If, on the other hand, they
+are much larger, the problem is called ill conditioned. It is desirable to measure by
+a single number – the condition number of the problem – the extent to which the
+solution is sensitive to perturbations in the input. The larger this number, the more
+ill conditioned the problem.
+
+Once the solution process starts, additional rounding errors will be committed,
+which also contaminate the solution. The resulting errors, in contrast to those
+caused by input errors, depend on the particular solution algorithm. It makes sense,
+therefore, to also talk about the condition of an algorithm, although its analysis is
+usually quite a bit harder. The quality of the computed solution is then determined
+by both (essentially the product of) the condition of the problem and the condition
+of the algorithm.
+
+1.1 Real Numbers, Machine Numbers, and Rounding
+
+We begin with the number system commonly used in mathematical analysis and
+confront it with the more primitive number system available to us on any particular
+computer. We identify the basic constant (the machine precision) that determines
+the level of precision attainable on such a computer.
+
+1.1.1 Real Numbers
+
+One can introduce real numbers in many different ways. Mathematicians favor
+the axiomatic approach, which leads them to define the set of real numbers as a
+“complete Archimedean ordered field.” Here we adopt a more pedestrian attitude
+and consider the set of real numbers R to consist of positive and negative numbers
+represented in some appropriate number system and manipulated in the usual
+manner known from elementary arithmetic. We adopt here the binary number
+system, since it is the one most commonly used on computers. Thus,
+
+.. math::
+
+   x \in  R iff x D ˙ .bn2n C bn12n1 C    C b0 C b121 C b222 C    /: (1.1)
+
+Here n  0 is some integer, and the “binary digits” bi are either 0 or 1,
+bi D 0 or bi D 1 for all i: (1.2)
+It is important to note that in general we need infinitely many binary digits to
+represent a real number. We conveniently write such a number in the abbreviated
+form (familiar from the decimal number system)
+x D ˙ .bnbn1    b0 : b1b2b3    /2; (1.3)
+where the subscript 2 at the end is to remind us that we are dealing with a binary
+number. (Without this subscript, the number could also be read as a decimal number,
+which would be a source of ambiguity.) The dot in (1.3) – appropriately called the
+binary point – separates the integer part on the left from the fractional part on the
+right. Note that representation (1.3) is not unique, for example, .0:0111 : : :/2 D
+.0:1/2. We regain uniqueness if we always insist on a finite representation, if one
+exists.
+Examples. 1. .10011:01/2 D 24 C 21 C 20 C 22 = 16 C 2 C 1 C 1
+4 D .19:25/10
+2. .:010101 : : :/2 D
+1X
+kD2
+.k even/
+2k D
+1X
+mD1
+22m D 1
+4
+1X
+mD0
+ 1
+4
+m
+D 1
+4
+1
+1 1
+4
+D 1
+3 D .0:333 : : :/1
+
+ 1
+5 D .0:2/10 D .0:00110011 : : :/2
+To determine the binary digits on the right, one keeps multiplying by 2 and
+observing the integer part in the result; if it is zero, the binary digit in question
+is 0, otherwise 1. In the latter case, the integral part is removed and the process
+repeated.
+The last example is of interest insofar as it shows that to a finite decimal number
+there may correspond a (nontrivial) infinite binary representation. One cannot
+assume, therefore, that a finite decimal number is exactly representable on a binary
+computer. Conversely, however, to a finite binary number there always corresponds
+a finite decimal representation. (Why?)
+1.1.2 Machine Numbers
+There are two kinds of machine numbers: floating point and fixed point. The first
+corresponds to the “scientific notation” in the decimal system, whereby a number is
+written as a decimal fraction times an integral power of 10. The second allows only
+for fractions. On a binary computer, one consistently uses powers of 2 instead of 10.
+More important, the number of binary digits, both in the fraction and in the exponent
+of 2 (if any), is finite and cannot exceed certain limits that are characteristics of the
+particular computer at hand.
+1.1.2.1 Floating-Point Numbers
+We denote by t the number of binary digits allowed by the computer in the fractional
+part and by s the number of binary digits in the exponent. Then the set of (real)
+floating-point numbers on that computer will be denoted by R.t; s/. Thus,
+x 2 R.t; s/ iff x D f  2e; (1.4)
+where, in the notation of (1.3),
+f D ˙ .: b1b2    bt /2; e D ˙ .cs1cs2    c0:/2: (1.5)
+Here all bi and cj are binary digits, that is, either zero or one. The binary fraction
+f is usually referred to as the mantissa of x and the integer e as the exponent of x.
+The number x in (1.4) is said to be normalized if in its fraction f we have b1 D 1.
+We assume that all numbers in R.t; s/ are normalized (with the exception of x D 0,
+which is treated as a special number). If x ¤ 0 were not normalized, we could
+
+multiply f by an appropriate power of 2, to normalize it, and adjust the exponent
+accordingly. This is always possible as long as the adjusted exponent is still in the
+admissible range.
+We can think of a floating-point number (1.4) as being accommodated in a
+machine register as shown in Fig. 1.1. The figure does not quite correspond to reality,
+but is close enough to it for our purposes.
+Note that the set (1.4) of normalized floating-point numbers is finite and is thus
+represented by a finite set of points on the real line. What is worse, these points are
+not uniformly distributed (cf. Ex. 1). This, then, is all we have to work with!
+It is immediately clear from (1.4) and (1.5) that the largest and smallest
+magnitude of a (normalized) floating-point number is given, respectively, by
+max
+x2R.t;s/jxj D .1  2t / 22s1; min
+x2R.t;s/jxj D 22s
+: (1.6)
+On a Sun Sparc workstation, for example, one has t D 23, s D 7, so that the
+maximum and minimum in (1.6) are 1:70  1038 and 2:94  1039, respectively.
+(Because of an asymmetric internal hardware representation of the exponent on
+these computers, the true range of floating-point numbers is slightly shifted, more
+like from 1:18  1038 to 3:40  1038.) Matlab arithmetic, essentially double
+precision, uses t D 53 and s D 10, which greatly expands the number range from
+something like 10308 to 10C308.
+A real nonzero number whose modulus is not in the range determined by (1.6)
+cannot be represented on this particular computer. If such a number is produced
+during the course of a computation, one says that overflow has occurred if its
+modulus is larger than the maximum in (1.6) and underflow if it is smaller than
+the minimum in (1.6). The occurrence of overflow is fatal, and the machine (or its
+operating system) usually prompts the computation to be interrupted. Underflow
+is less serious, and one may get away with replacing the delinquent number by
+zero. However, this is not foolproof. Imagine that at the next step the number that
+underflowed is to be multiplied by a huge number. If the replacement by zero has
+been made, the result will always be zero.
+To increase the precision, one can use two machine registers to represent a
+machine number. In effect, one then embeds R.t; s/  R.2t; s/, and calls x 2
+R.2t; s/ a double-precision number
+
+1.1.2.2 Fixed-Point Numbers
+This is the case (1.4) where e = 0. That is, fixed-point numbers are binary fractions,
+x D f , hence jf j < 1. We can therefore only deal with numbers that are in
+the interval (–1,1). This, in particular, requires extensive scaling and rescaling to
+make sure that all initial data, as well as all intermediate and final results, lie in that
+interval. Such a complication can only be justified in special circumstances where
+machine time and/or precision is at a premium. Note that on the same computer as
+considered before, we do not need to allocate space for the exponent in the machine
+register, and thus have in effect s Ct binary digits available for the fraction f , hence
+more precision; cf. Fig. 1.2.
+1.1.2.3 Other Data Structures for Numbers
+Complex floating-point numbers consist of pairs of real floating-point numbers,
+the first of the pair representing the real part and the second the imaginary part.
+To avoid rounding errors in arithmetic operations altogether, one can employ
+rational arithmetic, in which each (rational) number is represented by a pair
+of extended-precision integers – the numerator and denominator of the rational
+number. The Euclidean algorithm is used to remove common factors. A device
+that allows keeping track of error propagation and the influence of data errors is
+interval arithmetic involving intervals guaranteed to contain the desired numbers. In
+complex arithmetic, one employs rectangular or circular domains.
+1.1.3 Rounding
+A machine register acts much like the infamous Procrustes bed in Greek mythology.
+Procrustes was the innkeeper whose inn had only beds of one size. If a fellow came
+along who was too tall to fit into his beds, he cut off his feet. If the fellow was too
+short, he stretched him. In the same way, if a real number comes along that is too
+long, its tail end (not the head) is cutoff; if it is too short, it is padded by zeros at
+the end.
+
+More specifically, let
+x 2 R; x D ˙
+1X
+kD1
+bk2k
+!
+2e (1.7)
+be the “exact” real number (in normalized floating-point form) and
+x 2 R.t; s/; x D ˙
+tX
+kD1
+b
+k2k
+!
+2e
+(1.8)
+the rounded number. One then distinguishes between two methods of rounding, the
+first being Procrustes’ method.
+(a) Chopping. One takes
+x D chop.x/; e D e; b
+k D bk for k D 1; 2; : : : ; t: (1.9)
+(b) Symmetric rounding. This corresponds to the familiar rounding up or rounding
+down in decimal arithmetic, based on the first discarded decimal digit: if it is
+larger than or equal to 5, one rounds up; if it is less than 5, one rounds down. In
+binary arithmetic, the procedure is somewhat simpler, since there are only two
+possibilities: either the first discarded binary digit is 1, in which case one rounds
+up, or it is 0, in which case one rounds down. We can write the procedure very
+simply in terms of the chop operation in (1.9):
+x D rd.x/; rd.x/ WD chop
+
+x C 1
+2  2t  2e
+
+: (1.10)
+There is a small error incurred in rounding, which is most easily estimated in the
+case of chopping. Here the absolute error jx  xj is
+jx  chop.x/j D
+ˇ
+ˇ
+ˇ
+ˇ
+ˇ˙
+1X
+kDt C1
+bk2k
+ˇ
+ˇ
+ˇ
+ˇ
+ˇ 2e
+
+1X
+kDt C1
+2k  2e D 2t  2e:
+It depends on e (i.e., the magnitude of x), which is the reason why one prefers the
+relative error j.x  x/=xj (if x ¤ 0), which, for normalized x, can be estimated as
+ˇ
+ˇ
+ˇ
+ˇ
+x  chop.x/
+x
+ˇ
+ˇ
+ˇ
+ˇ  2t  2e
+ˇ
+ˇ
+ˇ
+ˇ
+ˇ˙
+1X
+kD1
+bk2k
+ˇ
+ˇ
+ˇ
+ˇ
+ˇ 2e
+ 2t  2e
+1
+2  2e D 2  2t : (1.11)
+
+Similarly, in the case of symmetric rounding, one finds (cf. Ex. 6)
+ˇ
+ˇ
+ˇ
+ˇ
+x  rd.x/
+x
+ˇ
+ˇ
+ˇ
+ˇ  2t : (1.12)
+The number on the right is an important, machine-dependent quantity, called the
+machine precision (or unit roundoff),
+eps D 2t I (1.13)
+it determines the level of precision of any large-scale floating-point computation.
+In Matlab double-precision arithmetic, one has t = 53, so that eps  1:11  1016
+(cf. Ex. 5), corresponding to a precision of 15–16 significant decimal digits.
+Since it is awkward to work with inequalities, one prefers writing (1.12)
+equivalently as an equality,
+rd.x/ D x.1 C "/; j"j  eps; (1.14)
+and defers dealing with the inequality (for ") to the very end.
+1.2 Machine Arithmetic
+The arithmetic used on computers unfortunately does not respect the laws of
+ordinary arithmetic. Each elementary floating-point operation, in general, generates
+a small error that may then propagate through subsequent machine operations. As
+a rule, this error propagation is harmless, except in the case of subtraction, where
+cancellation effects may seriously compromise the accuracy of the results.
+1.2.1 A Model of Machine Arithmetic
+Any of the four basic arithmetic operations, when applied to two machine numbers,
+may produce a result no longer representable on the computer. We have therefore
+errors also associated with arithmetic operations. Barring the occurrence of overflow
+or underflow, we may assume as a model of machine arithmetic that each arithmetic
+operation ı .D C; ; ; =/ produces a correctly rounded result. Thus, if x; y 2
+R.t; s/ are floating-point machine numbers, and fl.xıy/ denotes the machine-
+produced result of the arithmetic operation xıy, then
+fl.xıy/ D xıy .1 C "/; j"j  eps: (1.15)
+
+This can be interpreted in a number of ways, for example, in the case of
+multiplication,
+fl.x  y/ D Œx.1 C "/Ł  y D x  Œy.1 C "/Ł D .xp1 C "/  .yp1 C "/ D    :
+In each equation we identify the computed result as the exact result on data that are
+slightly perturbed, whereby the respective relative perturbations can be estimated,
+for example, by j"j  eps in the first two equations, and p1 C   1 C 1
+2 ", ˇ
+ˇ 1
+2 "ˇ
+ˇ 
+1
+2 eps in the third. These are elementary examples of backward error analysis, a
+powerful tool for estimating errors in machine computation (cf. also Sect. 1.3).
+Even though a single arithmetic operation causes a small error that can be
+neglected, a succession of arithmetic operations can well result in a significant error,
+owing to error propagation. It is like the small microorganisms that we all carry in
+our bodies: if our defense mechanism is in good order, the microorganisms cause no
+harm, in spite of their large presence. If for some reason our defenses are weakened,
+then all of a sudden they can play havoc with our health. The same is true in machine
+computation: the rounding errors, although widespread, will cause little harm unless
+our computations contain some weak spots that allow rounding errors to take over
+to the point of completely invalidating the results. We learn about one such weak
+spot (indeed the only one) in the next section.1
+1.2.2 Error Propagation in Arithmetic Operations:
+Cancellation Error
+We now study the extent to which the basic arithmetic operations propagate
+errors already present in their operands. Previously, in Sect. 1.2.1, we assumed the
+1Rounding errors can also have significant implications in real life. One example, taken from
+politics, concerns the problem of apportionment: how should the representatives in an assembly,
+such as the US House of Representatives or the Electoral College, be constituted to fairly reflect
+the size of population in the various states? If the total number of representatives in the assembly
+is given, say, A, the total population of the US is P , and the population of State i is pi , then State
+i should be allocated
+ri D pi
+P A
+representatives. The problem is that ri is not an integer, in general. How then should ri be rounded
+to an integer r 
+i ? One can think of three natural criteria to be imposed: (1) r 
+i should be one
+of the two integers closest to ri (“quota condition”). (2) If A is increased, all other things being
+the same, then r 
+i should not decrease (“house monotonicity”). (3) If pi is increased, the other pj
+remaining constant, then r 
+i should not decrease (“population monotonicity”). Unfortunately, there
+is no apportionment method that satisfies all three criteria. There is indeed a case in US history
+when Samuel J. Tilden lost his bid for the presidency in 1876 in favor of Rutherford B. Hayes,
+purely on the basis of the apportionment method adopted on that occasion (which, incidentally,
+was not the one prescribed by law at the time)
+
+perands to be exact machine-representable numbers and discussed the errors due to
+imperfect execution of the arithmetic operations by the computer. We now change
+our viewpoint and assume that the operands themselves are contaminated by errors,
+but the arithmetic operations are carried out exactly. (We already know what to do,
+cf. (1.15), when we are dealing with machine operations.) Our interest is in the
+errors in the results caused by errors in the data.
+(a) Multiplication. We consider values x.1 C "x/ and y.1 C "y/ of x and y
+contaminated by relative errors "x and "y, respectively. What is the relative error
+in the product? We assume "x, "y sufficiently small so that quantities of second
+order, "2
+x, "x"y, "2
+y – and even more so, quantities of still higher order – can be
+neglected against the epsilons themselves. Then
+x.1 C "x/  y.1 C "y/ D x  y .1 C "x C "y C "x"y/  x  y .1 C "x C "y/:
+Thus, the relative error "xy in the product is given (at least approximately) by
+"xy D "x C "y; (1.16)
+that is, the (relative) errors in the data are being added to produce the (relative)
+error in the result. We consider this to be acceptable error propagation, and in
+this sense, multiplication is a benign operation.
+(b) Division. Here we have similarly (if y ¤ 0)
+x.1 C "x/
+y.1 C "y/ D x
+y .1 C "x/.1  "y C "2
+y  C    /
+ x
+y .1 C "x  "y/;
+that is,
+"x=y D "x  "y: (1.17)
+Also division is a benign operation.
+(c) Addition and subtraction. Since x and y can be numbers of arbitrary signs, it
+suffices to look at addition. We have
+x.1 C "x/ C y.1 C "y/ D x C y C x"x C y"y
+D .x C y/
+
+1 C x"x C y"y
+x C y
+
+;
+assuming x C y ¤ 0. Therefore,
+"xCy D x
+x C y "x C y
+x C y "y: (1.18)
+
+As before, the error in the result is a linear combination of the errors in the
+data, but now the coefficients are no longer ˙1 but can assume values that are
+arbitrarily large. Note first, however, that when x and y have the same sign, then
+both coefficients are positive and bounded by 1, so that
+j"xCyj  j"xj C j"yj .x  y > 0/I (1.19)
+addition, in this case, is again a benign operation. It is only when x and y have
+opposite signs that the coefficients in (1.18) can be arbitrarily large, namely, when
+jx C yj is arbitrarily small compared to jxj and jyj. This happens when x and y are
+almost equal in absolute value, but opposite in sign. The large magnification of error
+then occurring in (1.18) is referred to as cancellation error. It is the only serious
+weakness – the Achilles heel, as it were – of numerical computation, and it should
+be avoided whenever possible. In particular, one should be prepared to encounter
+cancellation effects not only in single devastating amounts, but also repeatedly over
+a long period of time involving “small doses” of cancellation. Either way, the end
+result can be disastrous.
+We illustrate the cancellation phenomenon schematically in Fig. 1.3, where b,
+b0, b00 stand for binary digits that are reliable, and the g represent binary digits
+contaminated by error; these are often called “garbage” digits. Note in Fig. 1.3 that
+“garbage – garbage D garbage,” but, more importantly, that the final normalization
+of the result moves the first garbage digit from the 12th position to the 3rd.
+Cancellation is such a serious matter that we wish to give a number of elementary
+examples, not only of its occurrence, but also of how it might be avoided.
+Examples. 1. An algebraic identity: .a  b/2 D a2  2ab C b2. Although this is
+a valid identity in algebra, it is no longer valid in machine arithmetic. Thus, on
+a 2-decimal-digit computer, with a D 1.8, b D 1.7, we get, using symmetric
+rounding,
+fl.a2  2ab C b2/ D 3:2  6:2 C 2:9 D 0:10
+instead of the true result 0.010, which we obtain also on our 2-digit computer
+if we use the left-hand side of the identity. The expanded form of the square
+thus produces a result which is off by one order of magnitude and on top has
+the wrong sign
+
+2. Quadratic equation: x2  56x C 1 D 0. The usual formula for a quadratic gives,
+in 5-decimal arithmetic,
+x1 D 28  p783 D 28  27:982 D 0:018000;
+x2 D 28 C p783 D 28 C 27:982 D 55:982:
+This should be contrasted with the exact roots 0.0178628. . . and 55.982137. . . .
+As can be seen, the smaller of the two is obtained to only two correct decimal
+digits, owing to cancellation. An easy way out, of course, is to compute x2 first,
+which involves a benign addition, and then to compute x1 D 1=x2 by Vieta’s
+formula, which again involves a benign operation – division. In this way we
+obtain both roots to full machine accuracy.
+3. Compute y D px C ı – px, where x > 0 and jıj is very small. Clearly, the
+formula as written causes severe cancellation errors, since each square root has
+to be rounded. Writing instead
+y D ı
+px C ı C px
+completely removes the problem.
+4. Compute y D cos.x C ı/  cos x, where jıj is very small. Here cancellation
+can be avoided by writing y in the equivalent form
+y D 2 sin ı
+2 sin
+
+x C ı
+2
+
+:
+5. Compute y D f .x C ı/  f .x/, where jıj is very small and f a given function.
+Special tricks, such as those used in the two preceding examples, can no longer
+be played, but if f is sufficiently smooth in the neighborhood of x, we can use
+Taylor expansion:
+y D f 0.x/ı C 1
+2 f 00.x/ı2 C    :
+The terms in this series decrease rapidly when jıj is small so that cancellation
+is no longer a problem.
+Addition is an example of a potentially ill-conditioned function (of two vari-
+ables). It naturally leads us to study the condition of more general functions.
+1.3 The Condition of a Problem
+A problem typically has an input and an output. The input consists of a set of
+data, say, the coefficients of some equation, and the output of another set of
+numbers uniquely determined by the input, say, all the roots of the equation in some
+prescribed order. If we collect the input in a vector x 2 Rm (assuming the data
